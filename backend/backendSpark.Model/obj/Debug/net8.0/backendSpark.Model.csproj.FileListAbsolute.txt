@@ -1,0 +1,13 @@
+C:\Spark\backend\backendSpark.Model\bin\Debug\net8.0\backendSpark.Model.deps.json
+C:\Spark\backend\backendSpark.Model\bin\Debug\net8.0\backendSpark.Model.dll
+C:\Spark\backend\backendSpark.Model\bin\Debug\net8.0\backendSpark.Model.pdb
+C:\Spark\backend\backendSpark.Model\obj\Debug\net8.0\backendSpark.Model.csproj.AssemblyReference.cache
+C:\Spark\backend\backendSpark.Model\obj\Debug\net8.0\backendSpark.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Spark\backend\backendSpark.Model\obj\Debug\net8.0\backendSpark.Model.AssemblyInfoInputs.cache
+C:\Spark\backend\backendSpark.Model\obj\Debug\net8.0\backendSpark.Model.AssemblyInfo.cs
+C:\Spark\backend\backendSpark.Model\obj\Debug\net8.0\backendSpark.Model.csproj.CoreCompileInputs.cache
+C:\Spark\backend\backendSpark.Model\obj\Debug\net8.0\backendSpark.Model.sourcelink.json
+C:\Spark\backend\backendSpark.Model\obj\Debug\net8.0\backendSpark.Model.dll
+C:\Spark\backend\backendSpark.Model\obj\Debug\net8.0\refint\backendSpark.Model.dll
+C:\Spark\backend\backendSpark.Model\obj\Debug\net8.0\backendSpark.Model.pdb
+C:\Spark\backend\backendSpark.Model\obj\Debug\net8.0\ref\backendSpark.Model.dll

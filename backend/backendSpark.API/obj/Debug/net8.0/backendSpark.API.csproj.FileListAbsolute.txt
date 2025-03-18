@@ -31,3 +31,11 @@ C:\Spark\backend\backendSpark.API\obj\Debug\net8.0\refint\backendSpark.API.dll
 C:\Spark\backend\backendSpark.API\obj\Debug\net8.0\backendSpark.API.pdb
 C:\Spark\backend\backendSpark.API\obj\Debug\net8.0\backendSpark.API.genruntimeconfig.cache
 C:\Spark\backend\backendSpark.API\obj\Debug\net8.0\ref\backendSpark.API.dll
+C:\Spark\backend\backendSpark.API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+C:\Spark\backend\backendSpark.API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Spark\backend\backendSpark.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Spark\backend\backendSpark.API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Spark\backend\backendSpark.API\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Spark\backend\backendSpark.API\bin\Debug\net8.0\Npgsql.dll
+C:\Spark\backend\backendSpark.API\bin\Debug\net8.0\backendSpark.Model.dll
+C:\Spark\backend\backendSpark.API\bin\Debug\net8.0\backendSpark.Model.pdb
