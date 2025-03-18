@@ -1,0 +1,32 @@
+@if (attendee) { 
+    <div>
+        <b>Attendee ID:</b> <span>{{ attendee.attendee_id }}</span>
+    </div>
+    <div>
+        <b>Event ID:</b> <span>{{ attendee.event_id }}</span>
+    </div>
+    <div>
+        <b>First Name:</b> <span>{{ attendee.first_name }}</span>
+    </div>
+    <div>
+        <b>Last Name:</b> <span>{{ attendee.last_name }}</span>
+    </div>
+    <div>
+        <b>Email:</b> <span>{{ attendee.email }}</span>
+    </div>
+    <div>
+        <b>Header:</b> <span>{{ attendee.header }}</span>
+    </div>
+    <div>
+        <b>Bio:</b> <span>{{ attendee.bio }}</span>
+    </div>
+    <div>
+        <b>Link:</b> <span>{{ attendee.link }}</span>
+    </div>
+    <br>
+} 
+@else {
+    <div>
+        <b>No attendee selected</b>
+    </div>
+}
