@@ -11,3 +11,15 @@
 // Go to Program.cs line 19
     // Disabled the following line because we are not using SSL certificate on our solution.
     // app.UseHttpsRedirection();
+
+// Create a new library to connect with the database, as .Model
+    $ dotnet new classlib -n backendSpark.Model
+
+// Connect that library to the solution
+    $ dotnet sln add backendSpark.Model
+
+// Add NpgSql package, to optimize the connection with the database
+    $ dotnet add backendSpark.Model package NpgSql
+
+// Add Microsoft Configuration package
+    $ dotnet add backendSpark.Model package Microsoft.Extensions.Configurationc
