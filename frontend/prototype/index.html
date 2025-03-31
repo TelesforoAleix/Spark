@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networking Speed-Dating SaaS</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <header class="">
+        <div class="container">
+          <div class="container-box">
+            <a href="/frontend/prototype/index.html" class="logo">
+              <img src="css/Spark Logo.png" class="logo-image"  height="52" role="img"></img>
+            </a>
+    
+            <ul class="header-list">
+              <li><a href="/frontend/prototype/pages/event-info.html" class="header-link main">Event Info</a></li>
+              <li><a href="/frontend/prototype/pages/attendee-list.html" class="header-link">Attendees</a></li>
+              <li><a href="/frontend/prototype/pages/meeting-list.html" class="header-link">Meetings</a></li>
+            </ul>
+    
+            <form class="search-form" role="search">
+              <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+            </form>
+    
+        <!--    THIS IS USER MENU, NOT DONE YET
+            <div class="user-menu">
+              <a href="#" class="" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="image" alt="mdo" width="32" height="32" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small">
+                <li><a class="dropdown-item" href="#">New event</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div>
+            -->
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        <div class="container-box">
+            <section class="column left-column">
+                <h2>Event Information</h2>
+                <img src="/frontend/prototype/css/Spark Logo.png" alt="Event Logo" class="logo-image">
+                <p><strong>Name:</strong> Tech Innovation Summit</p>
+                <p><strong>Start Date:</strong> 2025-06-15 10:00 AM</p>
+                <p><strong>Finish Date:</strong> 2025-06-15 06:00 PM</p>
+                <p><strong>Location:</strong> Copenhagen Conference Center</p>
+                <p><strong>Bio:</strong> An annual event bringing together industry leaders to discuss the future of technology.</p>
+                <button class="button" onclick="openModal('event-modal')">Edit</button>
+            </section>
+            
+            <section class="column right-column">
+                <h2>Networking Configuration</h2>
+                <p><strong>Networking Start Time:</strong> 01:00 PM</p>
+                <p><strong>Networking Finish Time:</strong> 04:00 PM</p>
+                <p><strong>Networking Session Duration:</strong> 30 minutes</p>
+                <p><strong>Meeting Duration:</strong> 10 minutes</p>
+                <p><strong>Break Duration:</strong> 5 minutes</p>
+                <p><strong>Available Tables:</strong> 20</p>
+                <button class="button" onclick="openModal('networking-modal')">Edit</button>
+            </section>
+        </div>
+    </main>
+
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('event-modal')">&times;</span>
+            <h2>Edit Event Information</h2>
+            <label>Name: <input type="text" id="edit-event-name"></label><br>
+            <label>Start Date: <input type="datetime-local" id="edit-event-start"></label><br>
+            <label>Finish Date: <input type="datetime-local" id="edit-event-finish"></label><br>
+            <label>Location: <input type="text" id="edit-event-location"></label><br>
+            <label>Bio: <textarea id="edit-event-bio"></textarea></label><br>
+            <button class="button" onclick="saveEventData()">Save</button>
+        </div>
+    </div>
+    
+    <!-- Networking Edit Modal -->
+    <div id="networking-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('networking-modal')">&times;</span>
+            <h2>Edit Networking Configuration</h2><br>
+            <label>Networking Start Time: <input type="time" id="edit-networking-start"></label><br>
+            <label>Networking Finish Time: <input type="time" id="edit-networking-finish"></label><br>
+            <label>Networking Session Duration: <input type="number" id="edit-networking-session"></label><br>
+            <label>Meeting Duration: <input type="number" id="edit-meeting-duration"></label><br>
+            <label>Break Duration: <input type="number" id="edit-break-duration"></label><br>
+            <label>Available Tables: <input type="number" id="edit-tables"></label><br>
+            <button class="button" onclick="saveNetworkingData()">Save</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Networking Speed-Dating. All rights reserved.</p>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

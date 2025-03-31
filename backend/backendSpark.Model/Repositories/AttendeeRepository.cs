@@ -8,7 +8,7 @@ public class AttendeeRepository : BaseRepository
 {
     public AttendeeRepository(IConfiguration configuration) : base(configuration) { }
 
-    public Attendee GetAttendeeById(string orgId)
+    public Attendee GetAttendeeById(string attendeeId)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -18,7 +18,7 @@ public class AttendeeRepository : BaseRepository
             //creating an SQL command 
             var cmd = dbConn.CreateCommand();
             cmd.CommandText = "select * from attendee where attendee_id = @attendee_id";
-            cmd.Parameters.Add("@attendee_id", NpgsqlDbType.Varchar).Value = orgId;
+            cmd.Parameters.Add("@attendee_id", NpgsqlDbType.Varchar).Value = attendeeId;
             //call the base method to get data 
             var data = GetData(dbConn, cmd);
             if (data != null)
@@ -27,6 +27,8 @@ public class AttendeeRepository : BaseRepository
                 {
                     return new Attendee(data["attendee_id"].ToString())
                     {
+                        AttendeeId = data["attendee_id"].ToString(),
+                        EventId = data["event_id"].ToString(),
                         FirstName = data["first_name"].ToString(),
                         LastName = data["last_name"].ToString(),
                         Email = data["email"].ToString(),
@@ -64,6 +66,7 @@ public class AttendeeRepository : BaseRepository
                 {
                     Attendee a = new Attendee(data["attendee_id"].ToString())
                     {
+                        AttendeeId = data["attendee_id"].ToString(),
                         EventId = data["event_id"].ToString(),
                         FirstName = data["first_name"].ToString(),
                         LastName = data["last_name"].ToString(),
