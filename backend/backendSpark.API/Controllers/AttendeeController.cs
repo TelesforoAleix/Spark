@@ -12,20 +12,26 @@ namespace backendSpark.API.Controllers
         public AttendeeController(AttendeeRepository repository) { 
             Repository = repository; 
         } 
+
+
         [HttpGet("{AttendeeId}")] 
-        public ActionResult<Attendee> GetAttendee([FromRoute] string orgId) 
+        public ActionResult<Attendee> GetAttendee([FromRoute] string AttendeeId) 
         { 
-            Attendee attendee = Repository.GetAttendeeById(orgId); 
+            Attendee attendee = Repository.GetAttendeeById(AttendeeId); 
             if (attendee == null) { 
                 return NotFound(); 
             } 
             return Ok(attendee); 
         } 
+
+
         [HttpGet] 
         public ActionResult<IEnumerable<Attendee>> GetAttendees() 
         { 
             return Ok(Repository.GetAttendees()); 
         } 
+
+
         [HttpPost] 
         public ActionResult Post([FromBody] Attendee attendee) { 
             if (attendee == null || string.IsNullOrEmpty(attendee.AttendeeId) || 
@@ -43,6 +49,8 @@ namespace backendSpark.API.Controllers
             } 
             return BadRequest("Failed to insert attendee."); 
         } 
+
+
         [HttpPut] 
         public ActionResult UpdateAttendee([FromBody] Attendee attendee) 
         { 
@@ -66,6 +74,7 @@ namespace backendSpark.API.Controllers
             } 
             return BadRequest("Something went wrong"); 
         } 
+        
         [HttpDelete("{AttendeeId}")] 
         public ActionResult DeleteAttendee([FromRoute] string AttendeeId) { 
             Attendee existingAttendee = Repository.GetAttendeeById(AttendeeId); 
