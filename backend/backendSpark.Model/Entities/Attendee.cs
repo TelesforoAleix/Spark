@@ -19,7 +19,7 @@ public class Attendee {
         Link = link;
     }
 
-    public string AttendeeId { get; set;} // Read-only
+    public string AttendeeId { get; set;} 
     public string  EventId { get; set; } 
     public string FirstName { get; set; }
     public string LastName { get; set; }
