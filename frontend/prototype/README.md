@@ -3,6 +3,8 @@
 ## Overview
 This project is a front-end prototype for a networking speed-dating SaaS application. It includes three main pages: Event Info, Attendee List, and Meeting List, designed to facilitate networking events.
 
+Hope you like it!
+
 ## Project Structure
 ```
 Spark
