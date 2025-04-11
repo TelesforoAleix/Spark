@@ -2,31 +2,31 @@ namespace backendSpark.Model.Entities;
 
 public class Attendee {
     public Attendee(string attendeeId){
-        attendeeId = AttendeeId;}
+        this.attendeeId = attendeeId;}
 
     public Attendee(){}
         
 
     public Attendee(string attendeeId, string firstName, string lastName, string email, string password, string header, string bio, string link)
     {
-        AttendeeId = attendeeId; 
-        FirstName = firstName;
-        LastName = lastName;
-        Email = email;
-        Password = password;
-        Header = header;
-        Bio = bio;
-        Link = link;
+        this.attendeeId = attendeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.header = header;
+        this.bio = bio;
+        this.link = link;
     }
 
-    public string AttendeeId { get; set;} 
-    public string  EventId { get; set; } 
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
-    public string Header { get; set; }
-    public string Bio { get; set; }
-    public string Link { get; set; }
+    public string attendeeId { get; set;} 
+    public string  eventId { get; set; } 
+    public string firstName { get; set; }
+    public string lastName { get; set; }
+    public string email { get; set; }
+    public string password { get; set; }
+    public string header { get; set; }
+    public string bio { get; set; }
+    public string link { get; set; }
 }
 

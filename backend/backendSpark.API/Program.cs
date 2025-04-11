@@ -26,8 +26,9 @@ if (app.Environment.IsDevelopment())
 // This is disabled because we are not using SSL certificate on our solution.
 // app.UseHttpsRedirection();
 
+app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();
+

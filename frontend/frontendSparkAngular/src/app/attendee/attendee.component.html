@@ -1,15 +1,15 @@
 @if (attendee) { 
     <div>
-        <b>Attendee ID:</b> <span>{{ attendee.attendee_id }}</span>
+        <b>Attendee ID:</b> <span>{{ attendee.attendeeId }}</span>
     </div>
     <div>
-        <b>Event ID:</b> <span>{{ attendee.event_id }}</span>
+        <b>Event ID:</b> <span>{{ attendee.eventId }}</span>
     </div>
     <div>
-        <b>First Name:</b> <span>{{ attendee.first_name }}</span>
+        <b>First Name:</b> <span>{{ attendee.firstName }}</span>
     </div>
     <div>
-        <b>Last Name:</b> <span>{{ attendee.last_name }}</span>
+        <b>Last Name:</b> <span>{{ attendee.lastName }}</span>
     </div>
     <div>
         <b>Email:</b> <span>{{ attendee.email }}</span>
@@ -23,6 +23,8 @@
     <div>
         <b>Link:</b> <span>{{ attendee.link }}</span>
     </div>
+    <div><button (click)="deleteAttendee()">Delete</button></div>
+    <div><button (click)="editAttendee(attendee.attendeeId)">Edit</button></div>
     <br>
 } 
 @else {

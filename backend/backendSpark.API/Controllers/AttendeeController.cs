@@ -14,10 +14,10 @@ namespace backendSpark.API.Controllers
         } 
 
 
-        [HttpGet("{AttendeeId}")] 
-        public ActionResult<Attendee> GetAttendee([FromRoute] string AttendeeId) 
+        [HttpGet("{attendeeId}")] 
+        public ActionResult<Attendee> GetAttendee([FromRoute] string attendeeId) 
         { 
-            Attendee attendee = Repository.GetAttendeeById(AttendeeId); 
+            Attendee attendee = Repository.GetAttendeeById(attendeeId); 
             if (attendee == null) { 
                 return NotFound(); 
             } 
@@ -34,11 +34,11 @@ namespace backendSpark.API.Controllers
 
         [HttpPost] 
         public ActionResult Post([FromBody] Attendee attendee) { 
-            if (attendee == null || string.IsNullOrEmpty(attendee.AttendeeId) || 
-                string.IsNullOrEmpty(attendee.FirstName) || 
-                string.IsNullOrEmpty(attendee.LastName) ||
-                string.IsNullOrEmpty(attendee.Email) || 
-                string.IsNullOrEmpty(attendee.Password)) 
+            if (attendee == null || string.IsNullOrEmpty(attendee.attendeeId) || 
+                string.IsNullOrEmpty(attendee.firstName) || 
+                string.IsNullOrEmpty(attendee.lastName) ||
+                string.IsNullOrEmpty(attendee.email) || 
+                string.IsNullOrEmpty(attendee.password)) 
             { 
                 return BadRequest("Attendee info not correct"); 
             } 
@@ -51,21 +51,21 @@ namespace backendSpark.API.Controllers
         } 
 
 
-        [HttpPut] 
-        public ActionResult UpdateAttendee([FromBody] Attendee attendee) 
+        [HttpPut("{attendeeId}")] 
+        public ActionResult UpdateAttendee([FromRoute] string attendeeId, [FromBody] Attendee attendee) 
         { 
-            if (attendee == null || string.IsNullOrEmpty(attendee.AttendeeId) || 
-                string.IsNullOrEmpty(attendee.FirstName) || 
-                string.IsNullOrEmpty(attendee.LastName) ||
-                string.IsNullOrEmpty(attendee.Email) || 
-                string.IsNullOrEmpty(attendee.Password)) 
+            if (attendee == null || string.IsNullOrEmpty(attendee.attendeeId) || 
+                string.IsNullOrEmpty(attendee.firstName) || 
+                string.IsNullOrEmpty(attendee.lastName) ||
+                string.IsNullOrEmpty(attendee.email) || 
+                string.IsNullOrEmpty(attendee.password)) 
             {
                 return BadRequest("Attendee info not correct"); 
             } 
-            Attendee existinAttendee = Repository.GetAttendeeById(attendee.AttendeeId); 
+            Attendee existinAttendee = Repository.GetAttendeeById(attendee.attendeeId); 
             if (existinAttendee == null) 
             { 
-                return NotFound($"Student with orgId {attendee.AttendeeId} not found"); 
+                return NotFound($"Student with orgId {attendee.attendeeId} not found"); 
             } 
             bool status = Repository.UpdateAttendee(attendee); 
             if (status) 
@@ -75,19 +75,19 @@ namespace backendSpark.API.Controllers
             return BadRequest("Something went wrong"); 
         } 
         
-        [HttpDelete("{AttendeeId}")] 
-        public ActionResult DeleteAttendee([FromRoute] string AttendeeId) { 
-            Attendee existingAttendee = Repository.GetAttendeeById(AttendeeId); 
+        [HttpDelete("{attendeeId}")] 
+        public ActionResult DeleteAttendee([FromRoute] string attendeeId) { 
+            Attendee existingAttendee = Repository.GetAttendeeById(attendeeId); 
             if (existingAttendee == null) 
             { 
-                return NotFound($"Attendee with orgId {AttendeeId} not found"); 
+                return NotFound($"Attendee with orgId {attendeeId} not found"); 
             } 
-            bool status = Repository.DeleteAttendee(AttendeeId); 
+            bool status = Repository.DeleteAttendee(attendeeId); 
             if (status) 
             { 
                 return NoContent(); 
             } 
-            return BadRequest($"Unable to delete attendee with orgId {AttendeeId}");         
+            return BadRequest($"Unable to delete attendee with orgId {attendeeId}");         
         } 
     } 
 } 
