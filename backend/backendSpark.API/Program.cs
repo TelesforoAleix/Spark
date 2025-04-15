@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // For each repository created add the following line in program file to make the respository available to API Controller through dependency injection. 
-builder.Services.AddScoped<OrganizerRepository, OrganizerRepository>();
+builder.Services.AddScoped<EventRepository, EventRepository>();
 builder.Services.AddScoped<AttendeeRepository, AttendeeRepository>();
 
 var app = builder.Build();
