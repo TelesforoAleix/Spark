@@ -18,8 +18,8 @@
         <td>{{ attendee.header }}</td>
         <td>{{ attendee.bio }}</td>
         <td><a [href]="attendee.link" target="_blank">{{ attendee.link }}</a></td>
-        <td><button (click)="deleteAttendee(attendee.attendeeId)">Delete</button>
-          <button (click)="editAttendee(attendee.attendeeId)">Edit</button>
+        <td><button (click)="editAttendee(attendee.attendeeId)">Edit</button>
+          <button (click)="deleteAttendee(attendee.attendeeId)">Delete</button>
         </td>
       </tr>
     </tbody>

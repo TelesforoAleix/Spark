@@ -16,16 +16,41 @@ public class EventController : ControllerBase
         Repository = repository;
     }
 
-    [HttpGet("{id}")]
-    public ActionResult<Event> GetEvent([FromRoute] int id)
+
+
+    [HttpGet()]
+    public ActionResult<Event> GetEvent()
     {
-        Event @event = Repository.GetEventById(id);
+        Event @event = Repository.GetEventById(1);
         if (@event == null)
         {
+            Console.WriteLine($"Event not found");
             return NotFound();
         }
         return Ok(@event);
     }
+
+    [HttpPut]
+    public ActionResult UpdateEvent([FromBody] Event @event)
+    {
+        if (@event == null)
+        {
+            return BadRequest("Event info not correct");
+        }
+        Event existingEvent = Repository.GetEventById(@event.EventId);
+        if (existingEvent == null)
+        {
+            return NotFound($"Event with id {@event.EventId} not found");
+        }
+        bool status = Repository.UpdateEvent(@event);
+        if (status)
+        {
+            return Ok();
+        }
+        return BadRequest("Something went wrong");
+    }
+
+    /* -- ADDITIONAL API SERVICES FOR MULTIPLE EVENTS
 
     [HttpGet]
     public ActionResult<IEnumerable<Event>> GetEvents()
@@ -48,25 +73,6 @@ public class EventController : ControllerBase
         return BadRequest();
     }
 
-    [HttpPut]
-    public ActionResult UpdateEvent([FromBody] Event @event)
-    {
-        if (@event == null)
-        {
-            return BadRequest("Event info not correct");
-        }
-        Event existingEvent = Repository.GetEventById(@event.Id);
-        if (existingEvent == null)
-        {
-            return NotFound($"Event with id {@event.Id} not found");
-        }
-        bool status = Repository.UpdateEvent(@event);
-        if (status)
-        {
-            return Ok();
-        }
-        return BadRequest("Something went wrong");
-    }
 
     [HttpDelete("{id}")]
     public ActionResult DeleteEvent([FromRoute] int id)
@@ -83,4 +89,6 @@ public class EventController : ControllerBase
         }
         return BadRequest($"Unable to delete event with id {id}");
     }
+
+    */
 }

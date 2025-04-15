@@ -36,6 +36,8 @@ export class AttendeeListComponent implements OnInit {
     deleteAttendee(attendeeId: string): void {
       if (attendeeId) {
         this.attendeeService.deleteAttendee(attendeeId).subscribe();
+        console.log('Attendee deleted successfully');
+        this.reloadPage();
       } else {
         console.error('Attendee ID is undefined');
       }
@@ -47,5 +49,11 @@ export class AttendeeListComponent implements OnInit {
       } else {
         console.error('Attendee ID is undefined');
       }
+  }
+
+  reloadPage(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/attendee']);
+    });
   }
 }

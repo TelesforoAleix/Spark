@@ -1,29 +1,42 @@
 <section class="column left-column">
     <h2>Event Information</h2>
-    <img src="/frontend/prototype/css/Spark Logo.png" alt="Event Logo" class="logo-image">
-    <p><strong>Name:</strong> Tech Innovation Summit</p>
-    <p><strong>Start Date:</strong> 2025-06-15 10:00 AM</p>
-    <p><strong>Finish Date:</strong> 2025-06-15 06:00 PM</p>
-    <p><strong>Location:</strong> Copenhagen Conference Center</p>
-    <p><strong>Bio:</strong> An annual event bringing together industry leaders to discuss the future of technology.
+    <img src="../../assets/Spark_Logo.jpg" alt="Event Logo" class="logo-image">
+    <p><strong>Name:</strong> {{ event?.name }}</p>
+    <p><strong>Start Date:</strong> {{ event?.startDate }} </p>
+    <p><strong>Finish Date:</strong> {{ event?.finishDate }} </p>
+    <p><strong>Location:</strong> {{ event?.location }} </p>
+    <p><strong>Bio:</strong> {{ event?.bio }}
     </p>
     <button class="button" onclick="openModal('event-modal')">Edit</button>
   </section>
 
   <section class="column right-column">
     <h2>Networking Configuration</h2>
-    <p><strong>Networking Start Time:</strong> 01:00 PM</p>
-    <p><strong>Networking Finish Time:</strong> 04:00 PM</p>
-    <p><strong>Networking Session Duration:</strong> 30 minutes</p>
-    <p><strong>Meeting Duration:</strong> 10 minutes</p>
-    <p><strong>Break Duration:</strong> 5 minutes</p>
-    <p><strong>Available Tables:</strong> 20</p>
+    <p><strong>Networking Start Time:</strong> {{ event?.networkingStartDate }} </p>
+    <p><strong>Networking Finish Time:</strong> {{ event?.networkingFinishDate }}</p>
+    <p><strong>Meeting Duration:</strong> {{ event?.breakDuration }} minutes </p>
+    <p><strong>Break Duration:</strong> {{ event?.breakDuration }} minutes  </p>
+    <p><strong>Available Tables:</strong> {{ event?.availableTables }} </p>
     <button class="button" onclick="openModal('networking-modal')">Edit</button>
   </section>
 
-
- <!--  EDIT EVENT POP UP
+<!--  export interface Event {
+    eventId: number;
+    name: string;
+    startDate: Date;
+    finishDate: Date;
+    location: string;
+    bio: string;
+    networkingStartDate: Date;
+    networkingFinishDate: Date;
+    meetingDuration: number;
+    breakDuration: number;
+    availableTables: number;
+  }
+   -->
   
+ <!--  EDIT EVENT POP UP
+
  <div id="event-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('event-modal')">&times;</span>
