@@ -2,17 +2,18 @@ import { Component, Input } from '@angular/core';
 import { Attendee } from '../model/attendee';
 import { AttendeeService } from '../services/attendee.service';
 import { Router } from '@angular/router';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-attendee',
   standalone: true,
-  imports: [],
+  imports: [NgForOf],
   templateUrl: './attendee.component.html',
   styleUrl: './attendee.component.css'
 })
 
 export class AttendeeComponent {
-  @Input() attendee?: Attendee;
+  @Input() attendee!: Attendee;
 
   constructor(private attendeeService: AttendeeService, private router : Router) {}
 

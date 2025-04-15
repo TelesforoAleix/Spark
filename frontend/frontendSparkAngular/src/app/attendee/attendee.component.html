@@ -1,34 +1,16 @@
-@if (attendee) { 
-    <div>
-        <b>Attendee ID:</b> <span>{{ attendee.attendeeId }}</span>
-    </div>
-    <div>
-        <b>Event ID:</b> <span>{{ attendee.eventId }}</span>
-    </div>
-    <div>
-        <b>First Name:</b> <span>{{ attendee.firstName }}</span>
-    </div>
-    <div>
-        <b>Last Name:</b> <span>{{ attendee.lastName }}</span>
-    </div>
-    <div>
-        <b>Email:</b> <span>{{ attendee.email }}</span>
-    </div>
-    <div>
-        <b>Header:</b> <span>{{ attendee.header }}</span>
-    </div>
-    <div>
-        <b>Bio:</b> <span>{{ attendee.bio }}</span>
-    </div>
-    <div>
-        <b>Link:</b> <span>{{ attendee.link }}</span>
-    </div>
-    <div><button (click)="deleteAttendee()">Delete</button></div>
-    <div><button (click)="editAttendee(attendee.attendeeId)">Edit</button></div>
-    <br>
-} 
-@else {
-    <div>
-        <b>No attendee selected</b>
-    </div>
-}
+
+    <tr *ngIf="attendee">
+        <td>{{ attendee?.attendeeId }}</td>
+        <td>{{ attendee?.eventId }}</td>
+        <td>{{ attendee?.firstName }}</td>
+        <td>{{ attendee?.lastName }}</td>
+        <td>{{ attendee?.email }}</td>
+        <td>{{ attendee?.header }}</td>
+        <td>{{ attendee?.bio }}</td>
+        <td><a [href]="attendee.link" target="_blank">{{ attendee.link }}</a></td>
+        <td>
+          <button (click)="deleteAttendee()">Delete</button>
+          <button (click)="editAttendee(attendee.attendeeId)">Edit</button>
+        </td>
+      </tr>
+

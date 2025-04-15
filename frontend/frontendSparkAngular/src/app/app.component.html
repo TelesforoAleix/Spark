@@ -1,9 +1,47 @@
-<h1>This is a title</h1>
+<header class="">
+  <div class="container">
+    <div class="container-box">
+      <a routerLink="/" class="logo">
+        <img src="../assets/Spark_Logo.jpg" class="logo-image" height="52" alt="Logo">
+      </a>
 
-<ul>
-  <li><a routerLink="/">Home</a> </li>
-  <li><a routerLink="/attendee">Attendee list</a> </li>
-</ul>
-<br>
-   
-<router-outlet />
+      <ul class="header-list">
+        <li><a href="/frontend/prototype/pages/event-info.html" class="header-link main">Event Info</a></li>
+        <li><a routerLink="/attendee" class="header-link">Attendees</a></li>
+        <li><a href="/frontend/prototype/pages/meeting-list.html" class="header-link">Meetings</a></li>
+      </ul>
+
+      <form class="search-form" role="search">
+        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+      </form>
+
+      <!--    THIS IS USER MENU, NOT DONE YET
+          <div class="user-menu">
+            <a href="#" class="" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="image" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#">New event</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
+          -->
+    </div>
+  </div>
+</header>
+
+<main class="container">
+    
+    <router-outlet />
+
+</main>
+
+
+
+<footer>
+  <p>&copy; 2023 Networking Speed-Dating. All rights reserved.</p>
+</footer>
+
+

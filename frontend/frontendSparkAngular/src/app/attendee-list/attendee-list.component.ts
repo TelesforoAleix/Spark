@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Attendee } from '../model/attendee';
 import { AttendeeComponent } from '../attendee/attendee.component';
 import { AttendeeService } from '../services/attendee.service';
+import { NgForOf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-attendee-list',
   standalone: true,
-  imports: [AttendeeComponent],
+  imports: [AttendeeComponent, NgForOf],
   templateUrl: './attendee-list.component.html',
   styleUrl: './attendee-list.component.css'
 })
 
 export class AttendeeListComponent implements OnInit {
 
-  constructor(private attendeeService: AttendeeService) { }
+  constructor(private attendeeService: AttendeeService, private router : Router) { }
+  
+  @Input() attendee!: Attendee;
 
   attendees: Attendee[] = [];
 
@@ -27,5 +31,21 @@ export class AttendeeListComponent implements OnInit {
         console.error('Error fetching attendees:', error);
       }
     );
+  }
+  
+    deleteAttendee(attendeeId: string): void {
+      if (attendeeId) {
+        this.attendeeService.deleteAttendee(attendeeId).subscribe();
+      } else {
+        console.error('Attendee ID is undefined');
+      }
+      }
+  
+    editAttendee(attendeeId: string): void {
+      if (attendeeId) {
+        this.router.navigate(['/edit-attendee', attendeeId]);
+      } else {
+        console.error('Attendee ID is undefined');
+      }
   }
 }
