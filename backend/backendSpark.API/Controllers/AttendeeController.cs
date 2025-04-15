@@ -80,14 +80,14 @@ namespace backendSpark.API.Controllers
             Attendee existingAttendee = Repository.GetAttendeeById(attendeeId); 
             if (existingAttendee == null) 
             { 
-                return NotFound($"Attendee with orgId {attendeeId} not found"); 
+                return NotFound($"Attendee with Id {attendeeId} not found"); 
             } 
             bool status = Repository.DeleteAttendee(attendeeId); 
             if (status) 
             { 
                 return NoContent(); 
             } 
-            return BadRequest($"Unable to delete attendee with orgId {attendeeId}");         
+            return BadRequest($"Unable to delete attendee with Id {attendeeId}");         
         } 
     } 
 } 

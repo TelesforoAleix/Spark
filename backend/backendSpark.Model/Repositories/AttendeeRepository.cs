@@ -28,7 +28,7 @@ public class AttendeeRepository : BaseRepository
                     return new Attendee(data["attendee_id"].ToString())
                     {
                         attendeeId = data["attendee_id"].ToString(),
-                        eventId = data["event_id"].ToString(),
+                        eventId = Convert.ToInt32(data["event_id"]),
                         firstName = data["first_name"].ToString(),
                         lastName = data["last_name"].ToString(),
                         email = data["email"].ToString(),
@@ -67,7 +67,7 @@ public class AttendeeRepository : BaseRepository
                     Attendee a = new Attendee(data["attendee_id"].ToString())
                     {
                         attendeeId = data["attendee_id"].ToString(),
-                        eventId = data["event_id"].ToString(),
+                        eventId = Convert.ToInt32(data["event_id"]),
                         firstName = data["first_name"].ToString(),
                         lastName = data["last_name"].ToString(),
                         email = data["email"].ToString(),
@@ -136,7 +136,7 @@ public class AttendeeRepository : BaseRepository
     where
     attendee_id = @attendee_id";
         cmd.Parameters.AddWithValue("@attendee_id", NpgsqlDbType.Varchar, a.attendeeId);
-        cmd.Parameters.AddWithValue("@event_id", NpgsqlDbType.Varchar, a.eventId);
+        cmd.Parameters.AddWithValue("@event_id", NpgsqlDbType.Integer, a.eventId);
         cmd.Parameters.AddWithValue("@first_name", NpgsqlDbType.Text, a.firstName);
         cmd.Parameters.AddWithValue("@last_name", NpgsqlDbType.Text, a.lastName);
         cmd.Parameters.AddWithValue("@email", NpgsqlDbType.Text, a.email);

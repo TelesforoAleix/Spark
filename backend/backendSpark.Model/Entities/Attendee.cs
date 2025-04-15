@@ -20,7 +20,7 @@ public class Attendee {
     }
 
     public string attendeeId { get; set;} 
-    public string  eventId { get; set; } 
+    public int  eventId { get; set; } 
     public string firstName { get; set; }
     public string lastName { get; set; }
     public string email { get; set; }

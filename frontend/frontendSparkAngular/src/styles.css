@@ -18,13 +18,6 @@ h1 {
     margin: 0;
 }
 
-.container {
-    width: 100%;
-    margin-right: auto;
-    margin-left: 1rem;
-    overflow: hidden;
-}
-
 .container-box{
     justify-content: space-around !important;
     align-items: center !important;
