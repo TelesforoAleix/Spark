@@ -1,0 +1,16 @@
+
+    <tr *ngIf="attendee">
+        <td>{{ attendee?.attendeeId }}</td>
+        <td>{{ attendee?.eventId }}</td>
+        <td>{{ attendee?.firstName }}</td>
+        <td>{{ attendee?.lastName }}</td>
+        <td>{{ attendee?.email }}</td>
+        <td>{{ attendee?.header }}</td>
+        <td>{{ attendee?.bio }}</td>
+        <td><a [href]="attendee.link" target="_blank">{{ attendee.link }}</a></td>
+        <td>
+          <button (click)="deleteAttendee()">Delete</button>
+          <button (click)="editAttendee(attendee.attendeeId)">Edit</button>
+        </td>
+      </tr>
+

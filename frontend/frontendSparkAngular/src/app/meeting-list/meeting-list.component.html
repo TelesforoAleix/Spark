@@ -1,0 +1,21 @@
+<p>meeting-list works!</p>
+<!-- Displays all meetings in a simple table format -->
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Attendee ID</th>
+        <th>Table</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let meeting of meetings">
+        <td>{{ meeting.id }}</td>
+        <td>{{ meeting.attendeeId }}</td>
+        <td>{{ meeting.tableName }}</td>
+        <td>{{ meeting.time }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
