@@ -1,5 +1,5 @@
 using System;
-namespace CourseAdminSystem.Model.Entities;
+namespace backendSpark.Model.Entities;
 public class Event
 {
     public Event(int id) { this.EventId = id; }

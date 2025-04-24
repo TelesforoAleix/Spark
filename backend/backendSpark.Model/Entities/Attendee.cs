@@ -1,6 +1,6 @@
 using System;
 
-namespace CourseAdminSystem.Model.Entities;
+namespace backendSpark.Model.Entities;
 
 public class Attendee {
     public Attendee(string attendeeId){

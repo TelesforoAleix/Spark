@@ -2,13 +2,13 @@ using System;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using NpgsqlTypes;
-using CourseAdminSystem.Model.Entities;
+using backendSpark.Model.Entities;
 //  Modified by Damián:
-// - Standardized namespace to CourseAdminSystem.Model.Repositories
+// - Standardized namespace backendSpark.Model.Repositories
 // - Converted from file-scoped to block-scoped namespace style
 // - Fixed build issues and aligned with project conventions
 
-namespace CourseAdminSystem.Model.Repositories
+namespace backendSpark.Model.Repositories
 {
     public class EventRepository : BaseRepository
     {

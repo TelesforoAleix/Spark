@@ -1,21 +1,32 @@
-<p>meeting-list works!</p>
-<!-- Displays all meetings in a simple table format -->
-<table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Attendee ID</th>
-        <th>Table</th>
-        <th>Time</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let meeting of meetings">
-        <td>{{ meeting.id }}</td>
-        <td>{{ meeting.attendeeId }}</td>
-        <td>{{ meeting.tableName }}</td>
-        <td>{{ meeting.time }}</td>
-      </tr>
-    </tbody>
-  </table>
-  
+<!--
+  Purpose: Displays a list of scheduled meetings in a table format.
+  Notes: This template checks if the meeting list is empty and shows a fallback message. 
+  Used by: MeetingListComponent in meeting-list.component.ts
+-->
+
+<h2>Meeting Schedule</h2>
+
+<!-- If meetings exist, display them in a table -->
+<table *ngIf="meetings.length > 0; else noMeetings">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Attendee ID</th>
+      <th>Table</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let meeting of meetings">
+      <td>{{ meeting.id }}</td>
+      <td>{{ meeting.attendeeId }}</td>
+      <td>{{ meeting.tableName }}</td>
+      <td>{{ meeting.time }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Message to show when no data is available -->
+<ng-template #noMeetings>
+  <p>No meetings scheduled.</p>
+</ng-template>

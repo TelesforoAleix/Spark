@@ -79,3 +79,4 @@ C:/Spark/backend/backendSpark.API/obj/Debug/net8.0/ref/backendSpark.API.dll
 /Users/damiandzamba/Desktop/Spark-main 2/backend/backendSpark.API/obj/Debug/net8.0/backendSpark.API.pdb
 /Users/damiandzamba/Desktop/Spark-main 2/backend/backendSpark.API/obj/Debug/net8.0/backendSpark.API.genruntimeconfig.cache
 /Users/damiandzamba/Desktop/Spark-main 2/backend/backendSpark.API/obj/Debug/net8.0/ref/backendSpark.API.dll
+/Users/damiandzamba/Desktop/Spark-main 2/backend/backendSpark.API/obj/Debug/net8.0/backendSpark.API.sourcelink.json

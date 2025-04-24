@@ -1,6 +1,6 @@
 // Purpose: Represents a scheduled meeting between an attendee and a table at a specific time.
 
-namespace CourseAdminSystem.Model.Entities
+namespace backendSpark.Model.Entities
 {
     public class Meeting
     {

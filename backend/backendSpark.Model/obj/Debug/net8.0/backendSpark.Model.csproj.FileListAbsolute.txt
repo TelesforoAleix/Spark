@@ -23,3 +23,4 @@ C:/Spark/backend/backendSpark.Model/obj/Debug/net8.0/ref/backendSpark.Model.dll
 /Users/damiandzamba/Desktop/Spark-main 2/backend/backendSpark.Model/obj/Debug/net8.0/refint/backendSpark.Model.dll
 /Users/damiandzamba/Desktop/Spark-main 2/backend/backendSpark.Model/obj/Debug/net8.0/backendSpark.Model.pdb
 /Users/damiandzamba/Desktop/Spark-main 2/backend/backendSpark.Model/obj/Debug/net8.0/ref/backendSpark.Model.dll
+/Users/damiandzamba/Desktop/Spark-main 2/backend/backendSpark.Model/obj/Debug/net8.0/backendSpark.Model.sourcelink.json

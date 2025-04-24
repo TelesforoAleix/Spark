@@ -3,7 +3,7 @@
 // Purpose: Base class for all repositories — provides access to the connection string and helper methods.
 
 
-namespace CourseAdminSystem.Model.Repositories;
+namespace backendSpark.Model.Repositories;
 using Npgsql;
 using Microsoft.Extensions.Configuration;
 

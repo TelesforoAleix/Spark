@@ -1,5 +1,5 @@
-using CourseAdminSystem.Model.Entities;
-using CourseAdminSystem.Model.Repositories;
+using backendSpark.Model.Entities;
+using backendSpark.Model.Repositories;
 
 
 var builder = WebApplication.CreateBuilder(args);
