@@ -1,26 +1,85 @@
-<table class="table">
+<div class="section-header">
+  <h2>Event Attendees</h2>
+  <div>
+    <input type="text" placeholder="Search attendees..." class="search-input" (input)="filterAttendees($event)">
+    <button class="main-button" (click)="addNewAttendee()">Add Attendee</button>
+  </div>
+</div>
+
+<div class="attendee-list-container">
+  <div class="view-toggles">
+    <button [class.active]="viewMode === 'table'" (click)="viewMode = 'table'">Table View</button>
+    <button [class.active]="viewMode === 'card'" (click)="viewMode = 'card'">Card View</button>
+  </div>
+
+  <!-- Table View -->
+  <table class="table" *ngIf="viewMode === 'table'">
     <thead>
       <tr>
-        <th class="id">Attendee ID</th>
-        <th class="name">Name</th>
-        <th class="email">Email</th>
-        <th class="header">Header</th>
+        <th class="name" (click)="sortAttendees('name')">
+          Name
+          <span class="sort-icon" *ngIf="sortField === 'name'">{{sortDirection === 'asc' ? '▲' : '▼'}}</span>
+        </th>
+        <th class="header" (click)="sortAttendees('header')">
+          Title
+          <span class="sort-icon" *ngIf="sortField === 'header'">{{sortDirection === 'asc' ? '▲' : '▼'}}</span>
+        </th>
+        <th class="email">Contact</th>
         <th class="bio">Bio</th>
-        <th class="link">Link</th>
         <th class="actions">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let attendee of attendees">
-        <td>{{ attendee.attendeeId }}</td>
-        <td>{{ attendee.firstName }} {{ attendee.lastName }}</td>
-        <td>{{ attendee.email }}</td>
+      <tr *ngFor="let attendee of filteredAttendees">
+        <td class="name-cell">
+          <div class="attendee-name">{{ attendee.firstName }} {{ attendee.lastName }}</div>
+          <div class="attendee-id">ID: {{ attendee.attendeeId }}</div>
+        </td>
         <td>{{ attendee.header }}</td>
+        <td class="contact-cell">
+          <div>{{ attendee.email }}</div>
+          <a *ngIf="attendee.link" [href]="attendee.link" target="_blank" class="profile-link">View Profile</a>
+        </td>
         <td>{{ attendee.bio }}</td>
-        <td><a [href]="attendee.link" target="_blank">{{ attendee.link }}</a></td>
-        <td><button (click)="editAttendee(attendee.attendeeId)">Edit</button>
-          <button (click)="deleteAttendee(attendee.attendeeId)">Delete</button>
+        <td>
+          <button class="edit-btn" (click)="editAttendee(attendee.attendeeId)">Edit</button>
+          <button class="delete-btn" (click)="confirmDelete(attendee)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <!-- Card View -->
+  <div class="card-view" *ngIf="viewMode === 'card'">
+    <div class="attendee-card" *ngFor="let attendee of filteredAttendees">
+      <div class="card-header">
+        <div class="attendee-name">{{ attendee.firstName }} {{ attendee.lastName }}</div>
+        <div class="attendee-role">{{ attendee.header }}</div>
+      </div>
+      <div class="card-body">
+        <div class="attendee-id">ID: {{ attendee.attendeeId }}</div>
+        <div class="attendee-email">{{ attendee.email }}</div>
+        <div class="attendee-bio">{{ attendee.bio }}</div>
+        <a *ngIf="attendee.link" [href]="attendee.link" target="_blank" class="profile-link">View Profile</a>
+      </div>
+      <div class="card-actions">
+        <button class="edit-btn" (click)="editAttendee(attendee.attendeeId)">Edit</button>
+        <button class="delete-btn" (click)="confirmDelete(attendee)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal" [style.display]="showDeleteModal ? 'flex' : 'none'">
+  <div class="modal-content">
+    <span class="close" (click)="showDeleteModal = false">&times;</span>
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete {{selectedAttendee?.firstName}} {{selectedAttendee?.lastName}}?</p>
+    <div class="modal-actions">
+      <button class="delete-btn" (click)="deleteAttendee(selectedAttendee?.attendeeId!)">Delete</button>
+      <button class="cancel-btn" (click)="showDeleteModal = false">Cancel</button>
+    </div>
+  </div>
+</div>
+

@@ -5,7 +5,7 @@ export interface Meeting {
     eventId: number;
     attendee1: Attendee;
     attendee2: Attendee;
-    tableName: number;
+    tableName: string;
     startTime: Date;
     finishTime: Date;
 }

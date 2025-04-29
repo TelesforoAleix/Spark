@@ -25,14 +25,19 @@ export class MeetingService {
     console.log(meeting);
     return this.http.put(`${this.baseUrl}/Meeting/${meeting.meetingId}`, meeting);
     }
-    createMeetings(meeting: Meeting): Observable<any> {
+    createMeeting(meeting: Meeting): Observable<any> {
     console.log('MeetingService createMeeting() called');
     console.log(meeting);
     return this.http.post('${this.baseUrl}/Meeting', meeting);
     }
+    createSchedule(): Observable<any> {
+      return this.http.get('${this.baseUrl}/Meeting/Schedule');
+    }
+
     deleteMeeting(id: string): Observable<any> {
     console.log('MeetingService deleteMeeting() called');
     console.log(id);
     return this.http.delete(`${this.baseUrl}/Meeting/${id}`);
     }
+    
 }

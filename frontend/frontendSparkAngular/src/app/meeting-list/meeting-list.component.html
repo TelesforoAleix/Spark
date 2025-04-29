@@ -1,53 +1,86 @@
-<table class="table">
+<div class="section-header">
+  <div class="left-section">
+    <h2>Meeting Schedule</h2>
+    <div class="view-toggles">
+      <button [class.active]="viewMode === 'time'" (click)="viewMode = 'time'">Time View</button>
+      <button [class.active]="viewMode === 'table'" (click)="viewMode = 'table'">Table View</button>
+    </div>
+  </div>
+  <div>
+    <button class="main-button" (click)="generateSchedule()">Generate Schedule</button>
+    <button class="main-button" (click)="addNewMeeting()">New Meeting</button>
+  </div>
+</div>
+
+<!-- Time View (Tables as rows, Time slots as columns) -->
+<div class="time-view-container" *ngIf="viewMode === 'time'">
+  <table class="time-view-table">
     <thead>
       <tr>
-        <th class="StartTime">Start Time</th>
-        <th class="FinishTime">Finish Time</th>
-        <th class="Table">Table</th>
-        <th class="Attendee1">Attendee 1</th>
-        <th class="Attendee2">Attendee 2</th>
-        <th class="Actions">Actions</th>
+        <th class="table-header">Tables</th>
+        <th *ngFor="let timeSlot of timeSlots" class="time-header">
+          {{ timeSlot }}
+        </th>
       </tr>
     </thead>
-   <tbody>
-    <tr *ngFor="let meeting of meetings">
-        <td>{{ formatTime(meeting.startTime) }}</td>
-        <td>{{ formatTime(meeting.finishTime) }}</td>
-        <td>{{ meeting.tableName }}</td>
-        <td>{{ meeting.attendee1.firstName }} {{ meeting.attendee1.lastName }}</td>
-        <td>{{ meeting.attendee2.firstName }} {{ meeting.attendee2.lastName }}</td>
-        <td><button>Edit</button>
-          <button>Delete</button>
+    <tbody>
+      <tr *ngFor="let table of tables">
+        <td class="table-cell">{{ table }}</td>
+        <td *ngFor="let timeSlot of timeSlots" class="meeting-cell" [ngClass]="{'has-meeting': meetingsByTableAndTime[table][timeSlot]}">
+          <div *ngIf="meetingsByTableAndTime[table][timeSlot]" class="meeting-info">
+            <div class="attendees">
+              <div class="attendee">
+                <span class="attendee-name">{{ meetingsByTableAndTime[table][timeSlot].attendee1.firstName }} {{ meetingsByTableAndTime[table][timeSlot].attendee1.lastName }}</span>
+                <span class="attendee-role">{{ meetingsByTableAndTime[table][timeSlot].attendee1.header }}</span>
+              </div>
+              <div class="attendee-divider">meets</div>
+              <div class="attendee attendee2">
+                <span class="attendee-name">{{ meetingsByTableAndTime[table][timeSlot].attendee2.firstName }} {{ meetingsByTableAndTime[table][timeSlot].attendee2.lastName }}</span>
+                <span class="attendee-role">{{ meetingsByTableAndTime[table][timeSlot].attendee2.header }}</span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!meetingsByTableAndTime[table][timeSlot]" class="empty-slot">
+            Available
+          </div>
         </td>
-    </tr> 
+      </tr>
     </tbody>
-
   </table>
+</div>
 
-<!-- 
-  
-// Path: backend/Models/Meeting.cs
-    public class Meeting
-    {
-        public Meeting() { }
-        
-        public Meeting(int id) => Id = id;
+<!-- Table View (Time slots as rows, Tables as columns) -->
+<div class="time-table-container" *ngIf="viewMode === 'table'">
+  <table class="time-table">
+    <thead>
+      <tr>
+        <th class="time-header">Time Slots</th>
+        <th *ngFor="let table of tables" class="table-header">{{ table }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timeSlot of timeSlots">
+        <td class="time-cell">{{ timeSlot }}</td>
+        <td *ngFor="let table of tables" class="meeting-cell" [ngClass]="{'has-meeting': meetingsByTimeAndTable[timeSlot][table]}">
+          <div *ngIf="meetingsByTimeAndTable[timeSlot][table]" class="meeting-info">
+            <div class="attendees">
+              <div class="attendee">
+                <span class="name">{{ meetingsByTimeAndTable[timeSlot][table].attendee1.firstName }} {{ meetingsByTimeAndTable[timeSlot][table].attendee1.lastName }}</span>
+                <span class="role">{{ meetingsByTimeAndTable[timeSlot][table].attendee1.header }}</span>
+              </div>
+              <div class="attendee-divider">meets</div>
+              <div class="attendee attendee2">
+                <span class="name">{{ meetingsByTimeAndTable[timeSlot][table].attendee2.firstName }} {{ meetingsByTimeAndTable[timeSlot][table].attendee2.lastName }}</span>
+                <span class="role">{{ meetingsByTimeAndTable[timeSlot][table].attendee2.header }}</span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!meetingsByTimeAndTable[timeSlot][table]" class="empty-slot">
+            Available
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-        public int Id { get; set; }
-        
-        public string Attendee1Id { get; set; }
-        public string Attendee2Id { get; set; }
-        
-        public string TableName { get; set; } = string.Empty;
-        
-        public DateTime Date { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime FinishTime { get; set; }
-        
-        // Navigation properties (optional - for entity relationships)
-        public Attendee? Attendee1 { get; set; }
-        public Attendee? Attendee2 { get; set; }
-    }
-}
-
--->
