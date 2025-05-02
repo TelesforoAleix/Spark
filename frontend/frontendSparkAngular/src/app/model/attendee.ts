@@ -1,6 +1,6 @@
 export interface Attendee {
     attendeeId: string;   // varchar(8)
-    eventId: string | null; // varchar(8) or null
+    eventId: number | null; // varchar(8) or null
     firstName: string;     // varchar(20)
     lastName: string;      // varchar(20)
     email: string;          // varchar(50)

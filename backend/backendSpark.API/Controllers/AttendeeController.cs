@@ -37,8 +37,7 @@ namespace backendSpark.API.Controllers
             if (attendee == null || string.IsNullOrEmpty(attendee.attendeeId) || 
                 string.IsNullOrEmpty(attendee.firstName) || 
                 string.IsNullOrEmpty(attendee.lastName) ||
-                string.IsNullOrEmpty(attendee.email) || 
-                string.IsNullOrEmpty(attendee.password)) 
+                string.IsNullOrEmpty(attendee.email)) 
             { 
                 return BadRequest("Attendee info not correct"); 
             } 
@@ -57,8 +56,7 @@ namespace backendSpark.API.Controllers
             if (attendee == null || string.IsNullOrEmpty(attendee.attendeeId) || 
                 string.IsNullOrEmpty(attendee.firstName) || 
                 string.IsNullOrEmpty(attendee.lastName) ||
-                string.IsNullOrEmpty(attendee.email) || 
-                string.IsNullOrEmpty(attendee.password)) 
+                string.IsNullOrEmpty(attendee.email)) 
             {
                 return BadRequest("Attendee info not correct"); 
             } 

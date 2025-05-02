@@ -1,11 +1,40 @@
-<div>
-    <div>id: <span>{{this.attendeeId}}</span></div>
-    <div>First name: <input type="text" [(ngModel)]="attendee.firstName"></div>
-    <div>Last name: <input type="text" [(ngModel)]="attendee.lastName"></div>
-    <div>Email: <input type="text" [(ngModel)]="attendee.email"></div>
-    <div>Header: <input type="text" [(ngModel)]="attendee.header"></div>
-    <div>Bio: <input type="text" [(ngModel)]="attendee.bio"></div>
-    <div>Link: <input type="text" [(ngModel)]="attendee.link"></div>
-    <div><button (click)="updateAttendee()">Save</button></div>
-    <div><button (click)="deleteAttendee()">Delete</button></div>
-</div>
+<div class="edit-container">
+    <h2>Edit Attendee</h2>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td class="label">Attendee ID:</td>
+          <td class="value">{{this.attendeeId}}</td>
+        </tr>
+        <tr>
+          <td class="label">First Name:</td>
+          <td class="value"><input type="text" [(ngModel)]="attendee.firstName"></td>
+        </tr>
+        <tr>
+          <td class="label">Last Name:</td>
+          <td class="value"><input type="text" [(ngModel)]="attendee.lastName"></td>
+        </tr>
+        <tr>
+          <td class="label">Email:</td>
+          <td class="value"><input type="text" [(ngModel)]="attendee.email"></td>
+        </tr>
+        <tr>
+          <td class="label">Header:</td>
+          <td class="value"><input type="text" [(ngModel)]="attendee.header"></td>
+        </tr>
+        <tr>
+          <td class="label">Bio:</td>
+          <td class="value"><textarea [(ngModel)]="attendee.bio" rows="4"></textarea></td>
+        </tr>
+        <tr>
+          <td class="label">Link:</td>
+          <td class="value"><input type="text" [(ngModel)]="attendee.link"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions">
+      <button class="save-btn" (click)="updateAttendee()">Save</button>
+      <button class="delete-btn" (click)="deleteAttendee()">Delete</button>
+      <button class="cancel-btn" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div>

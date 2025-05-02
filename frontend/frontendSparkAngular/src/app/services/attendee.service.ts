@@ -31,4 +31,5 @@ export class AttendeeService {
     console.log('AttendeeService deleteAttendee() called');
     return this.http.delete(`${this.baseUrl}/Attendee/${id}`);
     }
+    
 }

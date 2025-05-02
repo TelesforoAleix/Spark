@@ -1,0 +1,35 @@
+<div class="add-container">
+    <h2>Add New Attendee</h2>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td class="label">First Name:</td>
+          <td class="value"><input type="text" [(ngModel)]="newAttendee.firstName" required></td>
+        </tr>
+        <tr>
+          <td class="label">Last Name:</td>
+          <td class="value"><input type="text" [(ngModel)]="newAttendee.lastName" required></td>
+        </tr>
+        <tr>
+          <td class="label">Email:</td>
+          <td class="value"><input type="email" [(ngModel)]="newAttendee.email" required></td>
+        </tr>
+        <tr>
+          <td class="label">Header:</td>
+          <td class="value"><input type="text" [(ngModel)]="newAttendee.header"></td>
+        </tr>
+        <tr>
+          <td class="label">Bio:</td>
+          <td class="value"><textarea [(ngModel)]="newAttendee.bio" rows="4"></textarea></td>
+        </tr>
+        <tr>
+          <td class="label">Link:</td>
+          <td class="value"><input type="text" [(ngModel)]="newAttendee.link"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions">
+      <button class="save-btn" (click)="saveAttendee()">Save</button>
+      <button class="cancel-btn" (click)="cancelAdd()">Cancel</button>
+    </div>
+  </div>

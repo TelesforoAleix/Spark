@@ -53,4 +53,9 @@ export class EditAttendeeComponent {
       }
     );
   }
+
+  cancelEdit(): void {
+    this.router.navigate(['/attendee']);
+  }
+  
 }
