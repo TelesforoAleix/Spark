@@ -1,0 +1,26 @@
+<tr>
+    <td>{{ formatTime(meeting.startTime) }}</td>
+    <td>{{ formatTime(meeting.finishTime) }}</td>
+    <td>{{ meeting.tableName }}</td>
+    <td>{{ meeting.attendee1.firstName }} {{ meeting.attendee1.lastName }}</td>
+    <td>{{ meeting.attendee2.firstName }} {{ meeting.attendee2.lastName }}</td>
+    <td><button>Edit</button>
+      <button>Delete</button>
+    </td>
+</tr> 
+
+  <!--
+  
+import { Attendee } from "./attendee";
+
+export interface Meeting {
+    meetingId: number;
+    eventId: number;
+    attendee1: Attendee;
+    attendee2: Attendee;
+    tableNumber: number;
+    startTime: Date;
+    finishTime: Date;
+}
+
+  -->

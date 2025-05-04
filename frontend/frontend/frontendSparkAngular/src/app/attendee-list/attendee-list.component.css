@@ -1,0 +1,60 @@
+table {
+    width: 100%;
+    margin: 20px 0;
+}
+
+th.id {
+    width: 50px;
+    text-align: center;
+}
+
+td:nth-child(1) {
+    text-align: center;
+    color: #4e4e4e;
+    font-style: italic;}
+
+th.name {
+    width: 150px;
+}
+
+td:nth-child(2) {
+    text-align: left;
+}
+th.email {
+    width: 200px;
+}
+td:nth-child(3) {
+    text-align: left;
+}
+
+th.header {
+    width: 200px;
+}
+td:nth-child(4) {
+    text-align: left;
+}
+
+th.bio {
+    width: 300px;
+}
+td:nth-child(5) {
+    text-align: left;
+}
+
+th.link {
+    width: 100px;
+}
+td:nth-child(6) {
+    text-align: center;
+}
+th.actions {
+    width: 150px;
+}
+
+td:nth-child(7) {
+    text-align: center;
+}
+
+td:nth-child(7)> button {
+    margin: 5px;
+}

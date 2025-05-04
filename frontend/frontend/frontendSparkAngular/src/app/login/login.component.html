@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()">
+    <label for="username">Username:</label>
+    <input
+      id="username"
+      type="text"
+      [(ngModel)]="user.username"
+      name="username"
+      placeholder="Enter your username"
+      required
+    />
+  
+    <label for="password">Password:</label>
+    <input
+      id="password"
+      type="password"
+      [(ngModel)]="user.password"
+      name="password"
+      placeholder="Enter your password"
+      required
+    />
+  
+    <button type="submit">Login</button>
+  </form>
+  
+  <p *ngIf="message">{{ message }}</p>

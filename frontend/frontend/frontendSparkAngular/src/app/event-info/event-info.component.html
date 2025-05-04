@@ -1,0 +1,68 @@
+<section class="column left-column">
+    <h2>Event Information</h2>
+    <img src="../../assets/Spark_Logo.jpg" alt="Event Logo" class="logo-image">
+    <p><strong>Name:</strong> {{ event?.name }}</p>
+    <p><strong>Start Date:</strong> {{ event?.startDate }} </p>
+    <p><strong>Finish Date:</strong> {{ event?.finishDate }} </p>
+    <p><strong>Location:</strong> {{ event?.location }} </p>
+    <p><strong>Bio:</strong> {{ event?.bio }}
+    </p>
+    <button class="button" onclick="openModal('event-modal')">Edit</button>
+  </section>
+
+  <section class="column right-column">
+    <h2>Networking Configuration</h2>
+    <p><strong>Networking Start Time:</strong> {{ event?.networkingStartDate }} </p>
+    <p><strong>Networking Finish Time:</strong> {{ event?.networkingFinishDate }}</p>
+    <p><strong>Meeting Duration:</strong> {{ event?.breakDuration }} minutes </p>
+    <p><strong>Break Duration:</strong> {{ event?.breakDuration }} minutes  </p>
+    <p><strong>Available Tables:</strong> {{ event?.availableTables }} </p>
+    <button class="button" onclick="openModal('networking-modal')">Edit</button>
+  </section>
+
+<!--  export interface Event {
+    eventId: number;
+    name: string;
+    startDate: Date;
+    finishDate: Date;
+    location: string;
+    bio: string;
+    networkingStartDate: Date;
+    networkingFinishDate: Date;
+    meetingDuration: number;
+    breakDuration: number;
+    availableTables: number;
+  }
+   -->
+  
+ <!--  EDIT EVENT POP UP
+
+ <div id="event-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('event-modal')">&times;</span>
+      <h2>Edit Event Information</h2>
+      <label>Name: <input type="text" id="edit-event-name"></label><br>
+      <label>Start Date: <input type="datetime-local" id="edit-event-start"></label><br>
+      <label>Finish Date: <input type="datetime-local" id="edit-event-finish"></label><br>
+      <label>Location: <input type="text" id="edit-event-location"></label><br>
+      <label>Bio: <textarea id="edit-event-bio"></textarea></label><br>
+      <button class="button" onclick="saveEventData()">Save</button>
+    </div>
+  </div>
+  
+   Networking Edit Modal
+  <div id="networking-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('networking-modal')">&times;</span>
+      <h2>Edit Networking Configuration</h2><br>
+      <label>Networking Start Time: <input type="time" id="edit-networking-start"></label><br>
+      <label>Networking Finish Time: <input type="time" id="edit-networking-finish"></label><br>
+      <label>Networking Session Duration: <input type="number" id="edit-networking-session"></label><br>
+      <label>Meeting Duration: <input type="number" id="edit-meeting-duration"></label><br>
+      <label>Break Duration: <input type="number" id="edit-break-duration"></label><br>
+      <label>Available Tables: <input type="number" id="edit-tables"></label><br>
+      <button class="button" onclick="saveNetworkingData()">Save</button>
+    </div>
+  </div>
+
+-->
