@@ -1,0 +1,53 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th class="StartTime">Start Time</th>
+        <th class="FinishTime">Finish Time</th>
+        <th class="Table">Table</th>
+        <th class="Attendee1">Attendee 1</th>
+        <th class="Attendee2">Attendee 2</th>
+        <th class="Actions">Actions</th>
+      </tr>
+    </thead>
+   <tbody>
+    <tr *ngFor="let meeting of meetings">
+        <td>{{ formatTime(meeting.startTime) }}</td>
+        <td>{{ formatTime(meeting.finishTime) }}</td>
+        <td>{{ meeting.tableName }}</td>
+        <td>{{ meeting.attendee1.firstName }} {{ meeting.attendee1.lastName }}</td>
+        <td>{{ meeting.attendee2.firstName }} {{ meeting.attendee2.lastName }}</td>
+        <td><button>Edit</button>
+          <button>Delete</button>
+        </td>
+    </tr> 
+    </tbody>
+
+  </table>
+
+<!-- 
+  
+// Path: backend/Models/Meeting.cs
+    public class Meeting
+    {
+        public Meeting() { }
+        
+        public Meeting(int id) => Id = id;
+
+        public int Id { get; set; }
+        
+        public string Attendee1Id { get; set; }
+        public string Attendee2Id { get; set; }
+        
+        public string TableName { get; set; } = string.Empty;
+        
+        public DateTime Date { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime FinishTime { get; set; }
+        
+        // Navigation properties (optional - for entity relationships)
+        public Attendee? Attendee1 { get; set; }
+        public Attendee? Attendee2 { get; set; }
+    }
+}
+
+-->
