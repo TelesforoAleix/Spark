@@ -1,3 +1,4 @@
+using backendSpark.API.Middleware;
 using backendSpark.Model.Entities;
 using backendSpark.Model.Repositories;
 
@@ -25,11 +26,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
 // This is disabled because we are not using SSL certificate on our solution.
 // app.UseHttpsRedirection();
 
-app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
-app.UseAuthorization();
+// This is the middleware for Header Authentication. Uncomment the line below to use it.
+// app.UseHeaderAuthenticationMiddleware();
+app.UseBasicAuthenticationMiddleware();
+
+app.UseAuthentication();
 
 app.MapControllers();
 app.Run();

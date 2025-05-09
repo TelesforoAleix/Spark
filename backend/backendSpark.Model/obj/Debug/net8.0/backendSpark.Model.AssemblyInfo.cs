@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("backendSpark.Model")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad164abcd6472d0414decdb1577b9ae88cb7a06d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae95b69ff1a3a852da9432af408b5db186301de7")]
 [assembly: System.Reflection.AssemblyProductAttribute("backendSpark.Model")]
 [assembly: System.Reflection.AssemblyTitleAttribute("backendSpark.Model")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
