@@ -9,12 +9,12 @@ CREATE TABLE "user" (
 CREATE TABLE event (
     event_id SERIAL PRIMARY KEY, -- Auto-incrementing ID
     name TEXT NOT NULL, -- Event name
-    startdate DATE, -- Start date of the event
-    finishdate DATE, -- Finish date of the event
+    startdate timestamp, -- Start date of the event
+    finishdate timestamp, -- Finish date of the event
     location TEXT, -- Location of the event
     bio TEXT, -- Short bio or description of the event
-    networking_startdate DATE, -- Start date of networking
-	networking_finishdate DATE, -- End date of networking
+    networking_startdate timestamp, -- Start date of networking
+	networking_finishdate timestamp, -- End date of networking
 	meeting_duration INTEGER, -- Time duration of each meeting
 	break_duration INTEGER, -- Time duration of breaks between meetings
 	available_tables INTEGER -- Number of available tables
@@ -55,7 +55,7 @@ VALUES
 -- Insert test data into the 'event' table (without numberofmaxattendee and numberoftables)
 INSERT INTO event (name, startdate, finishdate, location, bio, networking_startdate, networking_finishdate, meeting_duration, break_duration, available_tables)
 VALUES
-('Tech Networking Summit', '2025-03-20', '2025-03-20', 'Copenhagen Business Center', 'Bringing tech professionals together', '2025-03-20', '2025-03-20', 10, 5, 10);
+('Tech Networking Summit', '"2025-03-16 10:00:00"', '"2025-03-16 17:00:00"', 'Copenhagen Business Center', 'Bringing tech professionals together', '"2025-03-16 11:00:00"', '"2025-03-16 16:00:00"', 10, 5, 10);
 
 -- Insert test data into the 'attendee' table
 INSERT INTO attendee (attendee_id, event_id, first_name, last_name, email, hashed_password, header, bio, link)
@@ -76,59 +76,3 @@ VALUES
 ('AT0014', 1, 'Nina', 'Davis', 'nina@data.com', 'hashed_pw_14', 'Data Scientist', 'Analyzing big data for insights.', 'https://linkedin.com/nina'),
 ('AT0015', 1, 'Oscar', 'Evans', 'oscar@blockchain.com', 'hashed_pw_15', 'Blockchain Developer', 'Building decentralized applications.', 'https://linkedin.com/oscar');
 
--- Insert test data into the 'appointment' table
-
--- Table 1
-INSERT INTO appointment (event_id, attendee1_id, attendee2_id, table_name, date, start_time, finish_time)
-VALUES 
-(1, 'AT0001', 'AT0002', 'Table 1', '2025-03-20', '2025-03-20 09:00:00', '2025-03-20 09:10:00'),
-(1, 'AT0003', 'AT0004', 'Table 1', '2025-03-20', '2025-03-20 09:15:00', '2025-03-20 09:25:00'),
-(1, 'AT0005', 'AT0006', 'Table 1', '2025-03-20', '2025-03-20 09:30:00', '2025-03-20 09:40:00'),
-(1, 'AT0007', 'AT0008', 'Table 1', '2025-03-20', '2025-03-20 09:45:00', '2025-03-20 09:55:00'),
-(1, 'AT0009', 'AT0010', 'Table 1', '2025-03-20', '2025-03-20 10:00:00', '2025-03-20 10:10:00');
-
--- Table 2
-INSERT INTO appointment (event_id, attendee1_id, attendee2_id, table_name, date, start_time, finish_time)
-VALUES 
-(1, 'AT0011', 'AT0012', 'Table 2', '2025-03-20', '2025-03-20 09:00:00', '2025-03-20 09:10:00'),
-(1, 'AT0013', 'AT0014', 'Table 2', '2025-03-20', '2025-03-20 09:15:00', '2025-03-20 09:25:00'),
-(1, 'AT0015', 'AT0001', 'Table 2', '2025-03-20', '2025-03-20 09:30:00', '2025-03-20 09:40:00'),
-(1, 'AT0002', 'AT0003', 'Table 2', '2025-03-20', '2025-03-20 09:45:00', '2025-03-20 09:55:00'),
-(1, 'AT0004', 'AT0005', 'Table 2', '2025-03-20', '2025-03-20 10:00:00', '2025-03-20 10:10:00');
-
--- Table 3
-INSERT INTO appointment (event_id, attendee1_id, attendee2_id, table_name, date, start_time, finish_time)
-VALUES 
-(1, 'AT0006', 'AT0007', 'Table 3', '2025-03-20', '2025-03-20 09:00:00', '2025-03-20 09:10:00'),
-(1, 'AT0008', 'AT0009', 'Table 3', '2025-03-20', '2025-03-20 09:15:00', '2025-03-20 09:25:00'),
-(1, 'AT0010', 'AT0011', 'Table 3', '2025-03-20', '2025-03-20 09:30:00', '2025-03-20 09:40:00'),
-(1, 'AT0012', 'AT0013', 'Table 3', '2025-03-20', '2025-03-20 09:45:00', '2025-03-20 09:55:00'),
-(1, 'AT0014', 'AT0015', 'Table 3', '2025-03-20', '2025-03-20 10:00:00', '2025-03-20 10:10:00');
-
--- Day 1 - March 20, 2025 - Afternoon Session
--- Table 1
-INSERT INTO appointment (event_id, attendee1_id, attendee2_id, table_name, date, start_time, finish_time)
-VALUES 
-(1, 'AT0001', 'AT0003', 'Table 1', '2025-03-20', '2025-03-20 14:00:00', '2025-03-20 14:10:00'),
-(1, 'AT0002', 'AT0004', 'Table 1', '2025-03-20', '2025-03-20 14:15:00', '2025-03-20 14:25:00'),
-(1, 'AT0005', 'AT0007', 'Table 1', '2025-03-20', '2025-03-20 14:30:00', '2025-03-20 14:40:00'),
-(1, 'AT0006', 'AT0008', 'Table 1', '2025-03-20', '2025-03-20 14:45:00', '2025-03-20 14:55:00'),
-(1, 'AT0009', 'AT0011', 'Table 1', '2025-03-20', '2025-03-20 15:00:00', '2025-03-20 15:10:00');
-
--- Table 2
-INSERT INTO appointment (event_id, attendee1_id, attendee2_id, table_name, date, start_time, finish_time)
-VALUES 
-(1, 'AT0010', 'AT0012', 'Table 2', '2025-03-20', '2025-03-20 14:00:00', '2025-03-20 14:10:00'),
-(1, 'AT0013', 'AT0015', 'Table 2', '2025-03-20', '2025-03-20 14:15:00', '2025-03-20 14:25:00'),
-(1, 'AT0014', 'AT0001', 'Table 2', '2025-03-20', '2025-03-20 14:30:00', '2025-03-20 14:40:00'),
-(1, 'AT0002', 'AT0005', 'Table 2', '2025-03-20', '2025-03-20 14:45:00', '2025-03-20 14:55:00'),
-(1, 'AT0003', 'AT0006', 'Table 2', '2025-03-20', '2025-03-20 15:00:00', '2025-03-20 15:10:00');
-
--- Table 3
-INSERT INTO appointment (event_id, attendee1_id, attendee2_id, table_name, date, start_time, finish_time)
-VALUES 
-(1, 'AT0004', 'AT0007', 'Table 3', '2025-03-20', '2025-03-20 14:00:00', '2025-03-20 14:10:00'),
-(1, 'AT0008', 'AT0011', 'Table 3', '2025-03-20', '2025-03-20 14:15:00', '2025-03-20 14:25:00'),
-(1, 'AT0009', 'AT0012', 'Table 3', '2025-03-20', '2025-03-20 14:30:00', '2025-03-20 14:40:00'),
-(1, 'AT0010', 'AT0013', 'Table 3', '2025-03-20', '2025-03-20 14:45:00', '2025-03-20 14:55:00'),
-(1, 'AT0014', 'AT0015', 'Table 3', '2025-03-20', '2025-03-20 15:00:00', '2025-03-20 15:10:00');
