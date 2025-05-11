@@ -14,9 +14,9 @@ import { Router } from '@angular/router';
 export class AddAttendeeComponent implements OnInit {
   // Initialize with empty properties
   newAttendee: Attendee = {
-    attendeeId: 'AT' + Math.floor(Math.random() * 9999), 
+    attendeeId: this.generateAttendeeId(),
     eventId: 1,     // Default value for eventId
-    hashed_password: '', // Default value for hashed_password
+    hashed_password: 'password123', // Default value for hashed_password
     firstName: '',
     lastName: '',
     email: '',
@@ -24,6 +24,13 @@ export class AddAttendeeComponent implements OnInit {
     bio: '',
     link: ''
   };
+
+    // Generate a valid attendee ID in format "ATXXXX"
+    private generateAttendeeId(): string {
+      // Generate a random 4-digit number (1000-9999)
+      const randomDigits = 1000 + Math.floor(Math.random() * 9000);
+      return `AT${randomDigits}`;
+    }
 
   constructor(
     private attendeeService: AttendeeService,

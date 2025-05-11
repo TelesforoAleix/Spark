@@ -108,12 +108,12 @@ public class EventRepository : BaseRepository
     event_id = @event_id";
         cmd.Parameters.AddWithValue("@event_id", NpgsqlDbType.Integer, e.EventId);
         cmd.Parameters.AddWithValue("@name", NpgsqlDbType.Text, e.Name);
-        cmd.Parameters.AddWithValue("@startdate", NpgsqlDbType.Date, e.StartDate);
-        cmd.Parameters.AddWithValue("@finishdate", NpgsqlDbType.Date, e.FinishDate);
+        cmd.Parameters.AddWithValue("@startdate", NpgsqlDbType.Timestamp, e.StartDate);
+        cmd.Parameters.AddWithValue("@finishdate", NpgsqlDbType.Timestamp, e.FinishDate);
         cmd.Parameters.AddWithValue("@location", NpgsqlDbType.Text, e.Location);
         cmd.Parameters.AddWithValue("@bio", NpgsqlDbType.Text, e.Bio);
-        cmd.Parameters.AddWithValue("@networkingstartdate", NpgsqlDbType.Date, e.NetworkingStartDate);
-        cmd.Parameters.AddWithValue("@networkingfinishdate", NpgsqlDbType.Date, e.NetworkingFinishDate);
+        cmd.Parameters.AddWithValue("@networkingstartdate", NpgsqlDbType.Timestamp, e.NetworkingStartDate);
+        cmd.Parameters.AddWithValue("@networkingfinishdate", NpgsqlDbType.Timestamp, e.NetworkingFinishDate);
         cmd.Parameters.AddWithValue("@meetingduration", NpgsqlDbType.Integer, e.MeetingDuration);
         cmd.Parameters.AddWithValue("@breakduration", NpgsqlDbType.Integer, e.BreakDuration);
         cmd.Parameters.AddWithValue("@availabletables", NpgsqlDbType.Integer, e.AvailableTables);

@@ -27,12 +27,16 @@
           <td class="value"><textarea [(ngModel)]="event.bio" rows="4" required></textarea></td>
         </tr>
         <tr>
+          <td class="label">Networking Date:</td>
+          <td class="value"><input type="date" [(ngModel)]="networkingDate" required></td>
+        </tr>
+        <tr>
           <td class="label">Networking Start:</td>
-          <td class="value"><input type="datetime-local" [(ngModel)]="event.networkingStartDate" required></td>
+          <td class="value"><input type="time" [(ngModel)]="networkingStartTime" required></td>
         </tr>
         <tr>
           <td class="label">Networking End:</td>
-          <td class="value"><input type="datetime-local" [(ngModel)]="event.networkingFinishDate" required></td>
+          <td class="value"><input type="time" [(ngModel)]="networkingEndTime" required></td>
         </tr>
         <tr>
           <td class="label">Meeting Duration:</td>

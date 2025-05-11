@@ -32,7 +32,7 @@ public class AttendeeRepository : BaseRepository
                         firstName = data["first_name"].ToString(),
                         lastName = data["last_name"].ToString(),
                         email = data["email"].ToString(),
-                        password = data["hashed_password"].ToString(),
+                        hashed_password = data["hashed_password"].ToString(),
                         header = data["header"].ToString(),
                         bio = data["bio"].ToString(),
                         link = data["link"].ToString()
@@ -71,7 +71,7 @@ public class AttendeeRepository : BaseRepository
                         firstName = data["first_name"].ToString(),
                         lastName = data["last_name"].ToString(),
                         email = data["email"].ToString(),
-                        password = data["hashed_password"].ToString(),
+                        hashed_password = data["hashed_password"].ToString(),
                         header = data["header"].ToString(),
                         bio = data["bio"].ToString(),
                         link = data["link"].ToString()
@@ -100,12 +100,12 @@ public class AttendeeRepository : BaseRepository
         (@attendee_id, @event_id, @first_name, @last_name, @email, @hashed_password, @header, @bio, @link)";
 
             //adding parameters in a better way 
-            cmd.Parameters.AddWithValue("@attendee_id", NpgsqlDbType.Varchar, a.attendeeId);
-            cmd.Parameters.AddWithValue("@event_id", NpgsqlDbType.Varchar, a.eventId);
+            cmd.Parameters.AddWithValue("@attendee_id", NpgsqlDbType.Text, a.attendeeId);
+            cmd.Parameters.AddWithValue("@event_id", NpgsqlDbType.Integer, a.eventId);
             cmd.Parameters.AddWithValue("@first_name", NpgsqlDbType.Text, a.firstName);
             cmd.Parameters.AddWithValue("@last_name", NpgsqlDbType.Text, a.lastName);
             cmd.Parameters.AddWithValue("@email", NpgsqlDbType.Text, a.email);
-            cmd.Parameters.AddWithValue("@hashed_password", NpgsqlDbType.Text, a.password);
+            cmd.Parameters.AddWithValue("@hashed_password", NpgsqlDbType.Text, a.hashed_password);
             cmd.Parameters.AddWithValue("@header", NpgsqlDbType.Text, a.header);
             cmd.Parameters.AddWithValue("@bio", NpgsqlDbType.Text, a.bio);
             cmd.Parameters.AddWithValue("@link", NpgsqlDbType.Text, a.link);
@@ -135,12 +135,12 @@ public class AttendeeRepository : BaseRepository
     link=@link
     where
     attendee_id = @attendee_id";
-        cmd.Parameters.AddWithValue("@attendee_id", NpgsqlDbType.Varchar, a.attendeeId);
+        cmd.Parameters.AddWithValue("@attendee_id", NpgsqlDbType.Text, a.attendeeId);
         cmd.Parameters.AddWithValue("@event_id", NpgsqlDbType.Integer, a.eventId);
         cmd.Parameters.AddWithValue("@first_name", NpgsqlDbType.Text, a.firstName);
         cmd.Parameters.AddWithValue("@last_name", NpgsqlDbType.Text, a.lastName);
         cmd.Parameters.AddWithValue("@email", NpgsqlDbType.Text, a.email);
-        cmd.Parameters.AddWithValue("@hashed_password", NpgsqlDbType.Text, a.password);
+        cmd.Parameters.AddWithValue("@hashed_password", NpgsqlDbType.Text, a.hashed_password);
         cmd.Parameters.AddWithValue("@header", NpgsqlDbType.Text, a.header);
         cmd.Parameters.AddWithValue("@bio", NpgsqlDbType.Text, a.bio);
         cmd.Parameters.AddWithValue("@link", NpgsqlDbType.Text, a.link);

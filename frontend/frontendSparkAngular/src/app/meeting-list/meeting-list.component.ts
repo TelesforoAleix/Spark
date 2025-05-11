@@ -3,6 +3,7 @@ import { Meeting } from '../model/meeting';
 import { MeetingService } from '../services/meeting.service';
 import { Router } from '@angular/router';
 import { DatePipe, NgForOf, NgIf, NgClass, CommonModule } from '@angular/common';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-meeting-list',
@@ -119,33 +120,20 @@ export class MeetingListComponent implements OnInit {
     this.showDeleteModal = true;
   }
   
-  deleteMeeting(): void {
-    if (this.selectedMeeting && this.selectedMeeting.meetingId) {
-      this.meetingService.deleteMeeting(this.selectedMeeting.meetingId.toString()).subscribe(
-        () => {
-          this.meetings = this.meetings.filter(m => m.meetingId !== this.selectedMeeting?.meetingId);
-          this.organizeData();
-          this.showDeleteModal = false;
-        },
-        (error) => {
-          console.error('Error deleting meeting:', error);
-        }
-      );
-    }
-  }
 
-  editMeeting(meetingId: string | undefined): void {
-    if (meetingId) {
-      this.router.navigate(['/edit-meeting', meetingId]);
-    }
-  }
-  
-  addNewMeeting(): void {
-    this.router.navigate(['/add-meeting']);
-  }
-  
-  generateSchedule(): void {
-    // Implement your schedule generation logic
-    console.log('Generate schedule clicked');
+  generateSchedule(eventId: number = 1): void {
+    console.log('Generating schedule for event ID:', eventId);
+    this.meetingService.generateSchedule(eventId).subscribe({
+      next: (response) => {
+        console.log('Schedule generated successfully:', response);
+        // Reload meetings to show the new schedule
+        this.loadMeetings();
+      },
+      error: (error) => {
+        console.error('Error generating schedule:', error);
+        // Show error to user
+        alert('Failed to generate schedule: ' + (error.error?.message || error.message || 'Unknown error'));
+      }
+    });
   }
 }

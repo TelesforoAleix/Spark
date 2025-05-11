@@ -13,7 +13,7 @@ public class Attendee {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
+        this.hashed_password = password;
         this.header = header;
         this.bio = bio;
         this.link = link;
@@ -24,7 +24,7 @@ public class Attendee {
     public string firstName { get; set; }
     public string lastName { get; set; }
     public string email { get; set; }
-    public string password { get; set; }
+    public string  hashed_password { get; set; }
     public string header { get; set; }
     public string bio { get; set; }
     public string link { get; set; }
