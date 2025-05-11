@@ -3,30 +3,44 @@ using Microsoft.AspNetCore.Authorization;
 using backendSpark.Model.Repositories;
 using backendSpark.Model.Entities;
 
-namespace backendSpark.API.Controllers
-{
-    [AllowAnonymous]
-    [ApiController]
-    [Route("api/[controller]")]
-    public class LoginController : ControllerBase
-    {
-        private readonly UserRepository _userRepo;
+namespace backendSpark.API.Controllers 
+{ 
+    [Route("api/[controller]")] 
+    [ApiController] 
+    public class LoginController : ControllerBase 
+    { 
+        private readonly UserRepository _userRepository;
 
-        public LoginController(UserRepository userRepo)
+        public LoginController(UserRepository userRepository)
         {
-            _userRepo = userRepo;
+            _userRepository = userRepository;
         }
 
-        [HttpPost]
-        public ActionResult Login([FromBody] User loginData)
-        {
-            var user = _userRepo.GetUser(loginData.Username, loginData.Password);
-            if (user != null)
-            {
-                return Ok(new { message = "Login successful" });
-            }
-
-            return Unauthorized(new { message = "Invalid credentials" });
-        }
-    }
+        [AllowAnonymous] 
+        [HttpPost] 
+        public ActionResult Login([FromBody] Login credentials) 
+        { 
+            // Look up the user in the database using the repository
+            var user = _userRepository.GetUser(credentials.Username, credentials.Password);
+            
+            if (user != null) 
+            { 
+                // Generate authentication token
+                var text = $"{credentials.Username}:{credentials.Password}"; 
+                var bytes = System.Text.Encoding.UTF8.GetBytes(text); 
+                var encodedCredentials = Convert.ToBase64String(bytes); 
+                var headerValue = $"Basic {encodedCredentials}"; 
+                
+                return Ok(new { 
+                    headerValue = headerValue,
+                    userId = user.Id,
+                    username = user.Username
+                }); 
+            } 
+            else 
+            { 
+                return Unauthorized(); 
+            } 
+        } 
+    } 
 }

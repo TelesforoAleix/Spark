@@ -31,7 +31,10 @@ export class AddAttendeeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Nothing to initialize for add form
+    if (this.attendeeService.authHeader == null) { 
+      this.router.navigate(["login"]); 
+      return; 
+  }
   }
 
   saveAttendee(): void {

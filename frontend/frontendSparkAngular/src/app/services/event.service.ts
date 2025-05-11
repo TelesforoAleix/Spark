@@ -12,14 +12,24 @@ export class EventService {
   baseUrl = 'http://localhost:5193/api';
   constructor(private http: HttpClient) {}
 
+  get authHeader(): string { return localStorage["headerValue"]; }
+
   getEvent(): Observable<Event> {
     console.log('EventService getEvent() called');
-    return this.http.get<Event>(`${this.baseUrl}/Event`);
+    return this.http.get<Event>(`${this.baseUrl}/Event`, {headers: {
+      "Authorization": this.authHeader  }
+    });
   }
 
   updateEvent(event: Event): Observable<any> {
     console.log('EventService updateEvent() called');
-    return this.http.put(`${this.baseUrl}/Event/${event.eventId}`, event);
+    return this.http.put(`${this.baseUrl}/Event`, event, 
+      {
+        headers: {
+          "Authorization": this.authHeader
+        }
+      }
+    );
   }
 
 }

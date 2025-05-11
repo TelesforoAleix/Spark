@@ -9,35 +9,64 @@ import { Observable } from 'rxjs';
 })
 export class MeetingService {
   baseUrl = 'http://localhost:5193/api';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-    getMeetings(): Observable<Meeting[]> {
+  get authHeader(): string { return localStorage["headerValue"]; }
+
+  getMeetings(): Observable<Meeting[]> {
     console.log('MeetingService getMeetings() called');
-    return this.http.get<Meeting[]>(`${this.baseUrl}/Meeting`);
-    }
-    getMeeting(id: string): Observable<Meeting> {
+    return this.http.get<Meeting[]>(`${this.baseUrl}/Meeting`, {
+      headers: {
+        "Authorization": this.authHeader
+      }
+    });
+  }
+
+  getMeeting(id: string): Observable<Meeting> {
     console.log('MeetingService getMeeting() called');
     console.log(id);
-    return this.http.get<Meeting>(`${this.baseUrl}/Meeting/${id}`);
-    }
-    updateMeeting(meeting: Meeting): Observable<any> {
+    return this.http.get<Meeting>(`${this.baseUrl}/Meeting/${id}`, {
+      headers: {
+        "Authorization": this.authHeader
+      }
+    });
+  }
+
+  updateMeeting(meeting: Meeting): Observable<any> {
     console.log('MeetingService updateMeeting() called');
     console.log(meeting);
-    return this.http.put(`${this.baseUrl}/Meeting/${meeting.meetingId}`, meeting);
-    }
-    createMeeting(meeting: Meeting): Observable<any> {
+    return this.http.put(`${this.baseUrl}/Meeting/${meeting.meetingId}`, meeting, {
+      headers: {
+        "Authorization": this.authHeader
+      }
+    });
+  }
+
+  createMeeting(meeting: Meeting): Observable<any> {
     console.log('MeetingService createMeeting() called');
     console.log(meeting);
-    return this.http.post('${this.baseUrl}/Meeting', meeting);
-    }
-    createSchedule(): Observable<any> {
-      return this.http.get('${this.baseUrl}/Meeting/Schedule');
-    }
+    return this.http.post('${this.baseUrl}/Meeting', meeting,
+      {
+        headers: {
+          "Authorization": this.authHeader
+        }
+      }
+    );
+  }
 
-    deleteMeeting(id: string): Observable<any> {
+  createSchedule(): Observable<any> {
+    return this.http.get('${this.baseUrl}/Meeting/Schedule', {headers: {
+        "Authorization": this.authHeader
+      }
+    });
+  }
+
+  deleteMeeting(id: string): Observable<any> {
     console.log('MeetingService deleteMeeting() called');
     console.log(id);
-    return this.http.delete(`${this.baseUrl}/Meeting/${id}`);
-    }
-    
+    return this.http.delete(`${this.baseUrl}/Meeting/${id}`, {headers: {
+      "Authorization": this.authHeader}
+    });
+  }
+
 }

@@ -1,3 +1,10 @@
+-- Create the user table for authentication
+CREATE TABLE "user" (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
 -- Create the 'event' table
 CREATE TABLE event (
     event_id SERIAL PRIMARY KEY, -- Auto-incrementing ID
@@ -38,18 +45,12 @@ CREATE TABLE appointment (
     finish_time TIMESTAMP NOT NULL -- End time of the meeting
 );
 
--- Create the 'appointment' table for meetings 
-CREATE TABLE appointment (
-    id SERIAL PRIMARY KEY, -- Auto-incrementing ID
-    event_id INTEGER REFERENCES event(event_id) ON DELETE CASCADE, -- Foreign key to the event table
-    attendee1_id VARCHAR(8) REFERENCES attendee(attendee_id) ON DELETE CASCADE, -- First attendee
-    attendee2_id VARCHAR(8) REFERENCES attendee(attendee_id) ON DELETE CASCADE, -- Second attendee
-    table_name VARCHAR(20) NOT NULL, -- Name of the table/desk
-    date DATE NOT NULL, -- Date of the meeting
-    start_time TIMESTAMP NOT NULL, -- Start time of the meeting
-    finish_time TIMESTAMP NOT NULL -- End time of the meeting
-);
-
+-- Insert sample users
+INSERT INTO "user" (username, password)
+VALUES 
+('admin', 'admin123'),
+('manager', 'manager123'),
+('organizer', 'organizer123');
 
 -- Insert test data into the 'event' table (without numberofmaxattendee and numberoftables)
 INSERT INTO event (name, startdate, finishdate, location, bio, networking_startdate, networking_finishdate, meeting_duration, break_duration, available_tables)

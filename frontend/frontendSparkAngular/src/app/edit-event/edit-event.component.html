@@ -1,0 +1,55 @@
+<div class="edit-container">
+    <h2>Edit Event</h2>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td class="label">Event ID:</td>
+          <td class="value">{{event.eventId}}</td>
+        </tr>
+        <tr>
+          <td class="label">Event Name:</td>
+          <td class="value"><input type="text" [(ngModel)]="event.name" required></td>
+        </tr>
+        <tr>
+          <td class="label">Start Date:</td>
+          <td class="value"><input type="datetime-local" [(ngModel)]="event.startDate" required></td>
+        </tr>
+        <tr>
+          <td class="label">Finish Date:</td>
+          <td class="value"><input type="datetime-local" [(ngModel)]="event.finishDate" required></td>
+        </tr>
+        <tr>
+          <td class="label">Location:</td>
+          <td class="value"><input type="text" [(ngModel)]="event.location" required></td>
+        </tr>
+        <tr>
+          <td class="label">Description:</td>
+          <td class="value"><textarea [(ngModel)]="event.bio" rows="4" required></textarea></td>
+        </tr>
+        <tr>
+          <td class="label">Networking Start:</td>
+          <td class="value"><input type="datetime-local" [(ngModel)]="event.networkingStartDate" required></td>
+        </tr>
+        <tr>
+          <td class="label">Networking End:</td>
+          <td class="value"><input type="datetime-local" [(ngModel)]="event.networkingFinishDate" required></td>
+        </tr>
+        <tr>
+          <td class="label">Meeting Duration:</td>
+          <td class="value"><input type="number" [(ngModel)]="event.meetingDuration" min="1" required></td>
+        </tr>
+        <tr>
+          <td class="label">Break Duration:</td>
+          <td class="value"><input type="number" [(ngModel)]="event.breakDuration" min="0" required></td>
+        </tr>
+        <tr>
+          <td class="label">Available Tables:</td>
+          <td class="value"><input type="number" [(ngModel)]="event.availableTables" min="1" required></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions">
+      <button class="save-btn" (click)="updateEvent()">Save</button>
+      <button class="cancel-btn" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div>

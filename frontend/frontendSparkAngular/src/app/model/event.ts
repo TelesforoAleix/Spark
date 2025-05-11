@@ -1,12 +1,12 @@
 export interface Event {
     eventId: number;
     name: string;
-    startDate: Date;
-    finishDate: Date;
+    startDate: Date | string;
+    finishDate: Date | string;
     location: string;
     bio: string;
-    networkingStartDate: Date;
-    networkingFinishDate: Date;
+    networkingStartDate: Date | string;
+    networkingFinishDate: Date | string;
     meetingDuration: number;
     breakDuration: number;
     availableTables: number;

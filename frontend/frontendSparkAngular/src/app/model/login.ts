@@ -1,4 +1,10 @@
-export class Login {
-    public Username: string = ''; 
-    public Password: string = '';
-}
+export interface Login {
+    username: String;
+    password: String;
+  }
+  
+  export interface LoginResponse {
+    headerValue: string;
+    userId: number;
+    username: string;
+  }

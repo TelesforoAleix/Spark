@@ -28,6 +28,10 @@ export class MeetingListComponent implements OnInit {
   selectedMeeting: Meeting | null = null;
 
   ngOnInit(): void {
+    if (this.meetingService.authHeader == null) { 
+      this.router.navigate(["login"]); 
+      return; 
+  }
     this.loadMeetings();
   }
   

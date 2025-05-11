@@ -1,5 +1,6 @@
 using backendSpark.Model.Entities;
 using backendSpark.Model.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,33 +22,58 @@ public class EventController : ControllerBase
     [HttpGet()]
     public ActionResult<Event> GetEvent()
     {
-        Event @event = Repository.GetEventById(1);
-        if (@event == null)
+        try
         {
-            Console.WriteLine($"Event not found");
-            return NotFound();
+            Event @event = Repository.GetEventById(1);
+            if (@event == null)
+            {
+                Console.WriteLine($"Event not found");
+                return NotFound();
+            }
+            return Ok(@event);
         }
-        return Ok(@event);
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in GetEvent: {ex.Message}");
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
     }
-
+    [AllowAnonymous]
     [HttpPut]
     public ActionResult UpdateEvent([FromBody] Event @event)
     {
-        if (@event == null)
+        try
         {
-            return BadRequest("Event info not correct");
+            if (@event == null)
+            {
+                return BadRequest("Event info not provided");
+            }
+
+            // Validate event data
+            if (string.IsNullOrEmpty(@event.Name) || @event.EventId <= 0)
+            {
+                return BadRequest("Invalid event data");
+            }
+
+            Event existingEvent = Repository.GetEventById(@event.EventId);
+            if (existingEvent == null)
+            {
+                return NotFound($"Event with id {@event.EventId} not found");
+            }
+
+            bool status = Repository.UpdateEvent(@event);
+            if (status)
+            {
+                return Ok(@event); // Return the updated event
+            }
+            return BadRequest("Failed to update event");
         }
-        Event existingEvent = Repository.GetEventById(@event.EventId);
-        if (existingEvent == null)
+        catch (Exception ex)
         {
-            return NotFound($"Event with id {@event.EventId} not found");
+            Console.WriteLine($"Error in UpdateEvent: {ex.Message}");
+            Console.WriteLine($"Stack trace: {ex.StackTrace}");
+            return StatusCode(500, $"Internal server error: {ex.Message}");
         }
-        bool status = Repository.UpdateEvent(@event);
-        if (status)
-        {
-            return Ok();
-        }
-        return BadRequest("Something went wrong");
     }
 
     /* -- ADDITIONAL API SERVICES FOR MULTIPLE EVENTS

@@ -21,15 +21,28 @@ namespace backendSpark.Model.Repositories
             using var reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                return new User
-                {
-                    Id = reader.GetInt32(reader.GetOrdinal("id")),
-                    Username = reader.GetString(reader.GetOrdinal("username")),
-                    Password = reader.GetString(reader.GetOrdinal("password"))
-                };
+            return new User
+            {
+                Id = reader.GetInt32(reader.GetOrdinal("id")),
+                Username = reader.GetString(reader.GetOrdinal("username")),
+                Password = reader.GetString(reader.GetOrdinal("password"))
+            };
             }
 
             return null;
+        }
+
+        public void CreateUser(User user)
+        {
+            using var conn = new NpgsqlConnection(ConnectionString);
+            conn.Open();
+
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = "INSERT INTO \"user\" (username, password) VALUES (@username, @password)";
+            cmd.Parameters.AddWithValue("@username", user.Username);
+            cmd.Parameters.AddWithValue("@password", user.Password);
+
+            cmd.ExecuteNonQuery();
         }
     }
 }

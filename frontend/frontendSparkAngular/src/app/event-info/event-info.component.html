@@ -1,3 +1,97 @@
+
+<div class="event-card-container">
+  <div class="section-header">
+      <h2>Event Information</h2>
+      <button class="main-button" (click)="editEvent()">Edit Event</button>
+  </div>
+
+  <div class="event-card">
+      <div class="card-header">
+          <img src="/api/placeholder/80/80" alt="Event Logo" class="logo-image">
+          <div class="event-title-section">
+              <h1 class="event-name">{{ event?.name }}</h1>
+              <p class="event-location">
+                  <span>📍</span> {{ event?.location }}
+              </p>
+          </div>
+      </div>
+
+      <div class="card-body">
+          <div class="info-grid">
+              <!-- Event Timeline Section -->
+              <div class="info-section">
+                  <h3 class="section-title">Event Timeline</h3>
+                  <div class="info-item">
+                      <span class="info-label">Start:</span>
+                      <span class="info-value date-time">
+                          <span class="date">{{ event?.startDate | date:'fullDate' }}</span>
+                          <span class="time">{{ event?.startDate | date:'shortTime' }}</span>
+                      </span>
+                  </div>
+                  <div class="info-item">
+                      <span class="info-label">End:</span>
+                      <span class="info-value date-time">
+                          <span class="date">{{ event?.finishDate | date:'fullDate' }}</span>
+                          <span class="time">{{ event?.finishDate | date:'shortTime' }}</span>
+                      </span>
+                  </div>
+              </div>
+
+              <!-- Networking Configuration Section -->
+              <div class="info-section">
+                  <h3 class="section-title">Networking Sessions</h3>
+                  <div class="info-item">
+                      <span class="info-label">Start:</span>
+                      <span class="info-value date-time">
+                          <span class="date">{{ event?.networkingStartDate | date:'fullDate' }}</span>
+                          <span class="time">{{ event?.networkingStartDate | date:'shortTime' }}</span>
+                      </span>
+                  </div>
+                  <div class="info-item">
+                      <span class="info-label">End:</span>
+                      <span class="info-value date-time">
+                          <span class="date">{{ event?.networkingFinishDate | date:'fullDate' }}</span>
+                          <span class="time">{{ event?.networkingFinishDate | date:'shortTime' }}</span>
+                      </span>
+                  </div>
+              </div>
+
+              <!-- Meeting Details Section -->
+              <div class="info-section">
+                  <h3 class="section-title">Meeting Details</h3>
+                  <div class="info-item">
+                      <span class="info-label">Duration:</span>
+                      <span class="info-value highlight-value">{{ event?.meetingDuration }} minutes</span>
+                  </div>
+                  <div class="info-item">
+                      <span class="info-label">Break:</span>
+                      <span class="info-value">{{ event?.breakDuration }} minutes</span>
+                  </div>
+              </div>
+
+              <!-- Capacity Section -->
+              <div class="info-section">
+                  <h3 class="section-title">Capacity</h3>
+                  <div class="info-item">
+                      <span class="info-label">Tables:</span>
+                      <span class="info-value highlight-value">{{ event?.availableTables }}</span>
+                  </div>
+              </div>
+
+              <!-- Description Section -->
+              <div class="info-section bio-section">
+                  <h3 class="section-title">About This Event</h3>
+                  <div class="bio-text">{{ event?.bio }}</div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<!-- LEGACY CODE - REMOVE LATER
+ 
 <section class="column left-column">
     <h2>Event Information</h2>
     <img src="../../assets/Spark_Logo.jpg" alt="Event Logo" class="logo-image">
@@ -19,6 +113,8 @@
     <p><strong>Available Tables:</strong> {{ event?.availableTables }} </p>
     <button class="button" onclick="openModal('networking-modal')">Edit</button>
   </section>
+
+-->
 
 <!--  export interface Event {
     eventId: number;

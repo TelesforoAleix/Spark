@@ -1,31 +1,30 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router'; // ✅ import Router
-import { LoginService } from '../services/login-service.service';
-import { User } from '../model/user';
-
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  user: User = { username: '', password: '' };
-  message: string = '';
+  username!: String;
+  password!: String;
+  authenticated = false;
+  constructor(public auth: AuthService, private router: Router) { }
 
-  constructor(
-    private loginService: LoginService,
-    private router: Router // inject Router
-  ) {}
-
-  onSubmit(): void {
-    this.loginService.login(this.user).subscribe({
-      next: (res: { message: string }) => {
-        this.message = res.message;
-        this.router.navigate(['/event-info']); // navigate after login
-      },
-      error: (err: { error: { message: string } }) => this.message = err.error.message || 'Login failed'
-    });
+  login() {
+    if (this.username != null && this.password != null) {
+      this.auth.authenticate(this.username, this.password).subscribe((auth) => {
+        if (auth != null) {
+          // Save to the local storage 
+          localStorage.setItem('headerValue', auth.headerValue);
+          this.authenticated = true;
+          this.router.navigate(['event-info'])
+        }
+      });
+    }
   }
 }

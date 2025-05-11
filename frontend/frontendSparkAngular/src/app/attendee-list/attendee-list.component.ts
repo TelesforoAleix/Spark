@@ -42,6 +42,10 @@ export class AttendeeListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.attendeeService.authHeader == null) { 
+      this.router.navigate(["login"]); 
+      return; 
+  }
     this.loadAttendees();
   }
   

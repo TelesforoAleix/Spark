@@ -21,6 +21,10 @@ export class EditAttendeeComponent {
   ) {}
 
   ngOnInit() { 
+    if (this.attendeeService.authHeader == null) { 
+      this.router.navigate(["login"]); 
+      return; 
+  }
     this.attendeeService.getAttendee(this.attendeeId).subscribe(
       attendee => { 
         this.attendee = attendee;
