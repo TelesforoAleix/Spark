@@ -423,3 +423,6 @@ C:\Spark\backend\backendSpark.Tests\obj\Debug\net8.0\refint\backendSpark.Tests.d
 C:\Spark\backend\backendSpark.Tests\obj\Debug\net8.0\backendSpark.Tests.pdb
 C:\Spark\backend\backendSpark.Tests\obj\Debug\net8.0\backendSpark.Tests.genruntimeconfig.cache
 C:\Spark\backend\backendSpark.Tests\obj\Debug\net8.0\ref\backendSpark.Tests.dll
+C:\Spark\backend\backendSpark.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Spark\backend\backendSpark.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Spark\backend\backendSpark.Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll
