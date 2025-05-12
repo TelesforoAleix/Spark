@@ -8,28 +8,37 @@ using Microsoft.Extensions.Configuration;
 public class BaseRepository
 {
     protected string ConnectionString { get; }
+
+    // Constructor for production use
     public BaseRepository(IConfiguration configuration)
     {
         ConnectionString = configuration.GetConnectionString("spark_db");
     }
-    protected NpgsqlDataReader GetData(NpgsqlConnection conn, NpgsqlCommand cmd)
+
+    // Constructor for testing purposes
+        public BaseRepository(string connectionString)
+    {
+        ConnectionString = connectionString;
+    }
+
+    protected virtual NpgsqlDataReader GetData(NpgsqlConnection conn, NpgsqlCommand cmd)
     {
         conn.Open();
         return cmd.ExecuteReader();
     }
-    protected bool InsertData(NpgsqlConnection conn, NpgsqlCommand cmd)
+    protected virtual bool InsertData(NpgsqlConnection conn, NpgsqlCommand cmd)
     {
         conn.Open();
         cmd.ExecuteNonQuery();
         return true;
     }
-    protected bool UpdateData(NpgsqlConnection conn, NpgsqlCommand cmd)
+    protected virtual bool UpdateData(NpgsqlConnection conn, NpgsqlCommand cmd)
     {
         conn.Open();
         cmd.ExecuteNonQuery();
         return true;
     }
-    protected bool DeleteData(NpgsqlConnection conn, NpgsqlCommand cmd)
+    protected virtual bool DeleteData(NpgsqlConnection conn, NpgsqlCommand cmd)
     {
         conn.Open();
         cmd.ExecuteNonQuery();

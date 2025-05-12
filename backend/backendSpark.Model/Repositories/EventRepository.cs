@@ -12,7 +12,7 @@ public class EventRepository : BaseRepository
     {
     }
 
- public List<Event> GetEvents()
+ public virtual List<Event> GetEvents()
     {
         NpgsqlConnection dbConn = null;
         var events = new List<Event>();
@@ -51,7 +51,7 @@ public class EventRepository : BaseRepository
     }
 
 
-    public Event GetEventById(int event_id)
+    public virtual Event GetEventById(int event_id)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -88,7 +88,7 @@ public class EventRepository : BaseRepository
         }
     }
 
-    public bool UpdateEvent(Event e)
+    public virtual bool UpdateEvent(Event e)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
@@ -123,8 +123,12 @@ public class EventRepository : BaseRepository
 
 }
 
-/* -- ADDITIONAL FEATURES FOR MULTIPLE EVENTS
+// Notes to the code:
 
+    // All functions are virtual so that they can be overridden in the test project.
+
+
+/* -- ADDITIONAL FEATURES FOR MULTIPLE EVENTS
 
     public bool InsertEvent(Event e)
     {

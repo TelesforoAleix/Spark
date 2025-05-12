@@ -8,7 +8,7 @@ public class AttendeeRepository : BaseRepository
 {
     public AttendeeRepository(IConfiguration configuration) : base(configuration) { }
 
-    public Attendee GetAttendeeById(string attendeeId)
+    public virtual Attendee GetAttendeeById(string attendeeId)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -47,7 +47,7 @@ public class AttendeeRepository : BaseRepository
         }
     }
 
-    public List<Attendee> GetAttendees()
+    public virtual List<Attendee> GetAttendees()
     {
         NpgsqlConnection dbConn = null;
         var attendees = new List<Attendee>();
@@ -87,7 +87,7 @@ public class AttendeeRepository : BaseRepository
         }
     }
 
-    public bool InsertAttendee(Attendee a)
+    public virtual bool InsertAttendee(Attendee a)
     {
         NpgsqlConnection dbConn = null;
         try
@@ -120,7 +120,7 @@ public class AttendeeRepository : BaseRepository
         }
     }
 
-    public bool UpdateAttendee(Attendee a)
+    public virtual bool UpdateAttendee(Attendee a)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
@@ -147,7 +147,7 @@ public class AttendeeRepository : BaseRepository
         bool result = UpdateData(dbConn, cmd);
         return result;
     } 
-    public bool DeleteAttendee(string attendeeId)
+    public virtual bool DeleteAttendee(string attendeeId)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
         var cmd = dbConn.CreateCommand();
@@ -158,3 +158,7 @@ public class AttendeeRepository : BaseRepository
     }
 
 }
+
+// Notes to the code:
+
+    // All functions are virtual so that they can be overridden in the test project.

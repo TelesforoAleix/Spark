@@ -8,7 +8,7 @@ namespace backendSpark.Model.Repositories
     {
         public UserRepository(IConfiguration configuration) : base(configuration) {}
 
-        public User? GetUser(string username, string password)
+        public virtual User? GetUser(string username, string password)
         {
             using var conn = new NpgsqlConnection(ConnectionString);
             conn.Open();
@@ -32,7 +32,7 @@ namespace backendSpark.Model.Repositories
             return null;
         }
 
-        public void CreateUser(User user)
+        public virtual void CreateUser(User user)
         {
             using var conn = new NpgsqlConnection(ConnectionString);
             conn.Open();
@@ -46,3 +46,6 @@ namespace backendSpark.Model.Repositories
         }
     }
 }
+
+// Notes to the code:
+    // All functions are virtual so that they can be overridden in the test project.
