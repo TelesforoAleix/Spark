@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using backendSpark.Model.Entities;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
@@ -7,6 +5,8 @@ using NpgsqlTypes;
 
 namespace backendSpark.Model.Repositories
 {
+
+    // Purpose: This class represents the repository for meetings. It contains methods to interact with the appointment table in the database.
     public class MeetingRepository : BaseRepository
     {
         private readonly AttendeeRepository _attendeeRepository;
@@ -17,7 +17,7 @@ namespace backendSpark.Model.Repositories
             _attendeeRepository = attendeeRepository;
         }
 
-        // Get all meetings
+        // GetAllMeetings: Retrieve all meetings from the database
         public virtual List<Meeting> GetAllMeetings()
         {
             var meetings = new List<Meeting>();
@@ -37,7 +37,7 @@ namespace backendSpark.Model.Repositories
             return meetings;
         }
 
-        // Insert a new meeting to the database
+        // InsertMeeting: Insert a new meeting into the database
         public virtual bool InsertMeeting(Meeting meeting)
         {
             using var dbConn = new NpgsqlConnection(ConnectionString);
@@ -59,7 +59,7 @@ namespace backendSpark.Model.Repositories
         }
 
 
-        // Delete all meetings (used when generating a new schedule)
+        // DeleteAllMeetings: Delete all meetings from the database
         public virtual bool DeleteAllMeetings()
         {
             using var dbConn = new NpgsqlConnection(ConnectionString);
@@ -69,7 +69,8 @@ namespace backendSpark.Model.Repositories
             return DeleteData(dbConn, cmd);
         }
 
-        // Generate a new schedule for a given event
+        // GenerateSchedule: Matchmaking algorithm to generate a schedule for the event
+        // This method will delete all existing meetings, fetch event configuration, and generate a new schedule based on the event's parameters and the list of attendees.
         public virtual bool GenerateSchedule(int eventId)
         {
             Console.WriteLine($"Generating schedule for event ID: {eventId}");

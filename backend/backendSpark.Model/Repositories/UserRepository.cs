@@ -4,10 +4,13 @@ using Npgsql;
 
 namespace backendSpark.Model.Repositories
 {
+
+    // Purpose: This class represents the repository for users. It contains methods to interact with the user table in the database.
     public class UserRepository : BaseRepository
     {
         public UserRepository(IConfiguration configuration) : base(configuration) {}
 
+        // GetUser: Retrieves a user by username and password from the database. It creates a new NpgsqlConnection, executes a SQL command to select the user, and returns a User object if found.
         public virtual User? GetUser(string username, string password)
         {
             using var conn = new NpgsqlConnection(ConnectionString);
@@ -32,6 +35,7 @@ namespace backendSpark.Model.Repositories
             return null;
         }
 
+        // CreateUser: Inserts a new user into the database. It creates a new NpgsqlConnection, executes a SQL command to insert the user, and returns true if successful.
         public virtual void CreateUser(User user)
         {
             using var conn = new NpgsqlConnection(ConnectionString);

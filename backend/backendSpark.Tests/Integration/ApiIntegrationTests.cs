@@ -264,24 +264,6 @@ namespace backendSpark.Tests.Integration
 
         #region Helper Methods
 
-        // Helper method to generate a random attendee
-        private Attendee CreateRandomAttendee()
-        {
-            var randomId = $"TA{Guid.NewGuid().ToString().Substring(0, 8)}";
-
-            return new Attendee
-            {
-                attendeeId = randomId,
-                eventId = 1,
-                firstName = $"Test{randomId.Substring(0, 4)}",
-                lastName = "User",
-                email = $"test{randomId.Substring(0, 4)}@example.com",
-                header = "Test Position",
-                bio = "This is a test attendee created for integration testing.",
-                link = "https://example.com"
-            };
-        }
-
         public void Dispose()
         {
             _client?.Dispose();

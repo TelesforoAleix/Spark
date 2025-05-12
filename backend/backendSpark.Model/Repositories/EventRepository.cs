@@ -1,4 +1,3 @@
-using System;
 using backendSpark.Model.Entities;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
@@ -6,13 +5,15 @@ using NpgsqlTypes;
 
 namespace backendSpark.Model.Repositories;
 
+// Purpose: This class represents the repository for events. It contains methods to interact with the event table in the database.
 public class EventRepository : BaseRepository
 {
     public EventRepository(IConfiguration configuration) : base(configuration)
     {
     }
 
- public virtual List<Event> GetEvents()
+    // GetEvents: Retrieves all events from the database. It creates a new NpgsqlConnection, executes a SQL command to select all events, and returns a list of Event objects.
+    public virtual List<Event> GetEvents()
     {
         NpgsqlConnection dbConn = null;
         var events = new List<Event>();
@@ -50,7 +51,7 @@ public class EventRepository : BaseRepository
         }
     }
 
-
+    // GetEventById: Retrieves an event by its ID from the database. It creates a new NpgsqlConnection, executes a SQL command to select the event, and returns an Event object if found.
     public virtual Event GetEventById(int event_id)
     {
         NpgsqlConnection dbConn = null;
@@ -88,6 +89,7 @@ public class EventRepository : BaseRepository
         }
     }
 
+    // UpdateEvent: Updates an event in the database. It creates a new NpgsqlConnection, executes a SQL command to update the event, and returns true if successful.
     public virtual bool UpdateEvent(Event e)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
@@ -124,54 +126,5 @@ public class EventRepository : BaseRepository
 }
 
 // Notes to the code:
-
     // All functions are virtual so that they can be overridden in the test project.
 
-
-/* -- ADDITIONAL FEATURES FOR MULTIPLE EVENTS
-
-    public bool InsertEvent(Event e)
-    {
-        NpgsqlConnection dbConn = null;
-        try
-        {
-            dbConn = new NpgsqlConnection(ConnectionString);
-            var cmd = dbConn.CreateCommand();
-            cmd.CommandText = @"
-insert into event
-(name, startdate, finishdate, location, bio, numberofmaxattendee, numberoftables)
-values
-(@name, @startdate, @finishdate, @location, @bio, @numberofmaxattendee, @numberoftables)
-";
-            cmd.Parameters.AddWithValue("@name", NpgsqlDbType.Text, e.Name);
-            cmd.Parameters.AddWithValue("@startdate", NpgsqlDbType.Date, e.StartDate);
-            cmd.Parameters.AddWithValue("@finishdate", NpgsqlDbType.Date, e.FinishDate);
-            cmd.Parameters.AddWithValue("@location", NpgsqlDbType.Text, e.Location);
-            cmd.Parameters.AddWithValue("@bio", NpgsqlDbType.Text, e.Bio);
-            cmd.Parameters.AddWithValue("@numberofmaxattendee", NpgsqlDbType.Integer, e.NumberOfMaxAttendee);
-            cmd.Parameters.AddWithValue("@numberoftables", NpgsqlDbType.Integer, e.NumberOfTables);
-            bool result = InsertData(dbConn, cmd);
-            return result;
-        }
-        finally
-        {
-            dbConn?.Close();
-        }
-    }
-
-
-    public bool DeleteEvent(int event_id)
-    {
-        var dbConn = new NpgsqlConnection(ConnectionString);
-        var cmd = dbConn.CreateCommand();
-        cmd.CommandText = @"
-delete from event
-where event_id = @event_id
-";
-        cmd.Parameters.AddWithValue("@event_id", NpgsqlDbType.Integer, event_id);
-        bool result = DeleteData(dbConn, cmd);
-        return result;
-    }
-}
-
-*/

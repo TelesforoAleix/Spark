@@ -1,24 +1,25 @@
-using System;
 using System.Text;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.DependencyInjection;
 using backendSpark.Model.Repositories;
 
 namespace backendSpark.API.Middleware;
 
+// This middleware handles Basic Authentication for incoming HTTP requests.
+// It checks for the presence of an Authorization header and validates the credentials against a user repository.
 public class BasicAuthenticationMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly IServiceScopeFactory _scopeFactory;
     
-
     public BasicAuthenticationMiddleware(RequestDelegate next, IServiceScopeFactory scopeFactory)
     {
         _next = next;
         _scopeFactory = scopeFactory;
     }
 
+
+    // This method is called for each HTTP request
+    // It checks for the presence of an Authorization header and validates the credentials.
+    // If the credentials are valid, it allows the request to proceed; otherwise, it returns a 401 Unauthorized response.
     public async Task InvokeAsync(HttpContext context)
     {
         // Skip authentication for login endpoint
@@ -104,6 +105,8 @@ public class BasicAuthenticationMiddleware
     }
 }
 
+// Extension method to add the BasicAuthenticationMiddleware to the HTTP request pipeline
+// This allows the middleware to be easily added in the Program class.
 public static class BasicAuthenticationMiddlewareExtensions
 {
     public static IApplicationBuilder UseBasicAuthenticationMiddleware(this IApplicationBuilder builder)

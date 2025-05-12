@@ -8,6 +8,10 @@ namespace Spark.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+
+// This controller handles all operations related to events, including CRUD operations.
+// It uses the EventRepository to interact with the data layer.
+// The controller is responsible for handling HTTP requests and returning appropriate responses.
 public class EventController : ControllerBase
 {
     protected EventRepository Repository { get; }
@@ -18,7 +22,8 @@ public class EventController : ControllerBase
     }
 
 
-
+    // GET api/event
+    // This method retrieves the only event available (hard-coded eventId(1)).
     [HttpGet()]
     public ActionResult<Event> GetEvent()
     {
@@ -38,7 +43,10 @@ public class EventController : ControllerBase
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
-    [AllowAnonymous]
+    
+    
+    // PUT api/event
+    // This method updates an existing event. Can be used to update any event, for scalability.
     [HttpPut]
     public ActionResult UpdateEvent([FromBody] Event @event)
     {
@@ -76,45 +84,4 @@ public class EventController : ControllerBase
         }
     }
 
-    /* -- ADDITIONAL API SERVICES FOR MULTIPLE EVENTS
-
-    [HttpGet]
-    public ActionResult<IEnumerable<Event>> GetEvents()
-    {
-        return Ok(Repository.GetEvents());
-    }
-
-    [HttpPost]
-    public ActionResult Post([FromBody] Event @event)
-    {
-        if (@event == null)
-        {
-            return BadRequest("Event info not correct");
-        }
-        bool status = Repository.InsertEvent(@event);
-        if (status)
-        {
-            return Ok();
-        }
-        return BadRequest();
-    }
-
-
-    [HttpDelete("{id}")]
-    public ActionResult DeleteEvent([FromRoute] int id)
-    {
-        Event existingEvent = Repository.GetEventById(id);
-        if (existingEvent == null)
-        {
-            return NotFound($"Event with id {id} not found");
-        }
-        bool status = Repository.DeleteEvent(id);
-        if (status)
-        {
-            return NoContent();
-        }
-        return BadRequest($"Unable to delete event with id {id}");
-    }
-
-    */
 }

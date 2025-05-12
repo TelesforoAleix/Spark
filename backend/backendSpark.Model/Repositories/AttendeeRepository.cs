@@ -1,13 +1,17 @@
-using System;
 using backendSpark.Model.Entities;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using NpgsqlTypes;
 namespace backendSpark.Model.Repositories;
+
+// Purpose: Contains the AttendeeRepository class which is responsible for interacting with the attendee table in the database. It contains methods to get, insert, update, and delete attendees. 
+// The AttendeeRepository class inherits from the BaseRepository class, which contains common database operations.
 public class AttendeeRepository : BaseRepository
 {
+    
     public AttendeeRepository(IConfiguration configuration) : base(configuration) { }
 
+    // GetAttendeeById: Retrieves an attendee by their ID from the database. It creates a new NpgsqlConnection, executes a SQL command to select the attendee, and returns an Attendee object if found.
     public virtual Attendee GetAttendeeById(string attendeeId)
     {
         NpgsqlConnection dbConn = null;
@@ -47,6 +51,7 @@ public class AttendeeRepository : BaseRepository
         }
     }
 
+    // GetAttendees: Retrieves all attendees from the database. It creates a new NpgsqlConnection, executes a SQL command to select all attendees, and returns a list of Attendee objects.
     public virtual List<Attendee> GetAttendees()
     {
         NpgsqlConnection dbConn = null;
@@ -87,6 +92,7 @@ public class AttendeeRepository : BaseRepository
         }
     }
 
+    // InsertAttendee: Inserts a new attendee into the database. It creates a new NpgsqlConnection, prepares an SQL command with parameters, and executes the command to insert the attendee.
     public virtual bool InsertAttendee(Attendee a)
     {
         NpgsqlConnection dbConn = null;
@@ -120,6 +126,7 @@ public class AttendeeRepository : BaseRepository
         }
     }
 
+    // UpdateAttendee: Updates an existing attendee in the database. It creates a new NpgsqlConnection, prepares an SQL command with parameters, and executes the command to update the attendee.
     public virtual bool UpdateAttendee(Attendee a)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
@@ -147,6 +154,8 @@ public class AttendeeRepository : BaseRepository
         bool result = UpdateData(dbConn, cmd);
         return result;
     } 
+    
+    // DeleteAttendee: Deletes an attendee from the database by their ID. It creates a new NpgsqlConnection, prepares an SQL command with parameters, and executes the command to delete the attendee.
     public virtual bool DeleteAttendee(string attendeeId)
     {
         var dbConn = new NpgsqlConnection(ConnectionString);
@@ -160,5 +169,4 @@ public class AttendeeRepository : BaseRepository
 }
 
 // Notes to the code:
-
     // All functions are virtual so that they can be overridden in the test project.

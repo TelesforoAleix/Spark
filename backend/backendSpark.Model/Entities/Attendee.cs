@@ -1,12 +1,16 @@
 namespace backendSpark.Model.Entities;
 
+/// Purpose: This class represents an attendee in the system. It contains properties for the attendee's ID, event ID, first name, last name, email, hashed password, header, bio, and link.
 public class Attendee {
+
+    // Constructor to initialize an Attendee object with a specific attendeeId.
     public Attendee(string attendeeId){
         this.attendeeId = attendeeId;}
 
+    // Default constructor for creating an Attendee object without any parameters.
     public Attendee(){}
         
-
+    // Constructor to initialize an Attendee object with all properties.
     public Attendee(string attendeeId, string firstName, string lastName, string email, string password, string header, string bio, string link)
     {
         this.attendeeId = attendeeId;
@@ -19,6 +23,7 @@ public class Attendee {
         this.link = link;
     }
 
+    // Properties of the Attendee class.
     public string attendeeId { get; set;} 
     public int  eventId { get; set; } 
     public string firstName { get; set; }

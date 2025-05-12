@@ -4,7 +4,9 @@ using backendSpark.Model.Repositories;
 using backendSpark.Model.Entities;
 
 namespace backendSpark.API.Controllers 
-{ 
+{   
+    // This controller handles user login operations.
+    // It uses the UserRepository to interact with the data layer.
     [Route("api/[controller]")] 
     [ApiController] 
     public class LoginController : ControllerBase 
@@ -16,7 +18,10 @@ namespace backendSpark.API.Controllers
             _userRepository = userRepository;
         }
 
-        [AllowAnonymous] 
+        // POST api/login
+        // This method handles user login requests.
+        // It takes a Login object as input and returns an authentication token (Basic Authentication) if successful.
+        [AllowAnonymous]  // It can be accessed without authentication
         [HttpPost] 
         public ActionResult Login([FromBody] Login credentials) 
         { 

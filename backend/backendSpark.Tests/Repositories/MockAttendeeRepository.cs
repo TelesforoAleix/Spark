@@ -1,16 +1,12 @@
 using backendSpark.Model.Entities;
 using backendSpark.Model.Repositories;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace backendSpark.Tests.Mocks
 {
-    /// <summary>
-    /// A concrete mock implementation of AttendeeRepository that uses an in-memory collection
-    /// instead of a real database connection. Useful for testing the controller without database access.
-    /// </summary>
+
+    // Purpose: This class is a mock implementation of the AttendeeRepository for testing purposes. It uses an in-memory collection to store attendees instead of a database.
+    // It inherits from the AttendeeRepository class and overrides its methods to provide mock functionality.
     public class MockAttendeeRepository : AttendeeRepository
     {
         private readonly Dictionary<string, Attendee> _attendees = new Dictionary<string, Attendee>();
@@ -35,6 +31,7 @@ namespace backendSpark.Tests.Mocks
                 .Build();
         }
         
+        // Seed test data for the mock repository
         private void SeedTestData()
         {
             // Add test attendees
@@ -67,7 +64,6 @@ namespace backendSpark.Tests.Mocks
         }
         
         // Override repository methods to use in-memory collection
-        
         public override Attendee GetAttendeeById(string attendeeId)
         {
             if (_attendees.TryGetValue(attendeeId, out var attendee))

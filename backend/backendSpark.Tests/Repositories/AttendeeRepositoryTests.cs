@@ -1,15 +1,14 @@
-using Xunit;
 using Moq;
 using backendSpark.Model.Entities;
 using backendSpark.Model.Repositories;
 using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Data;
 using Npgsql;
-using System;
 
 namespace backendSpark.Tests.Repositories
 {
+
+    // Purpose: This class contains unit tests for the AttendeeRepository class. It uses Moq to create mock objects and Xunit for testing.
+    // It tests the methods of the AttendeeRepository to ensure they build the correct SQL commands and handle connection strings properly.
     public class AttendeeRepositoryTests
     {
         private readonly Mock<IConfiguration> _mockConfiguration;

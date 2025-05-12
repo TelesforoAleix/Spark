@@ -1,8 +1,8 @@
 using backendSpark.API.Middleware;
-using backendSpark.Model.Entities;
 using backendSpark.Model.Repositories;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +15,7 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -27,7 +27,7 @@ builder.Services.AddScoped<UserRepository, UserRepository>();
 builder.Services.AddScoped<BaseRepository, BaseRepository>();
 
 
-var app = builder.Build();
+var app = builder.Build(); 
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -36,20 +36,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
+// Add CORS policy to allow any origin, method, and header
 app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 // This is disabled because we are not using SSL certificate on our solution.
 // app.UseHttpsRedirection();
 
-// This is the middleware for Header Authentication. Uncomment the line below to use it.
-// app.UseHeaderAuthenticationMiddleware();
+// This is the middleware for Basic Authentication
 app.UseBasicAuthenticationMiddleware();
 
-app.UseAuthentication();
-app.UseAuthorization();
 
-app.MapControllers();
+app.UseAuthentication(); 
+app.UseAuthorization(); 
+
+
+app.MapControllers(); 
 app.Run();
 
-public partial class Program { }
+public partial class Program { } // This partial class is used for testing purposes. It allows the test project to access the Program class in the API project.

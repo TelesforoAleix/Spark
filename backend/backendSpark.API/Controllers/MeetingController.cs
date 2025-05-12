@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace backendSpark.API.Controllers
 {
+    // This controller handles all operations related to meetings, including generating schedules.
+    // It uses the MeetingRepository to interact with the data layer.
     [Route("api/[controller]")]
     [ApiController]
     public class MeetingController : ControllerBase
@@ -15,9 +17,8 @@ namespace backendSpark.API.Controllers
             _repository = repository;
         }
 
-        /// <summary>
-        /// Get all meetings
-        /// </summary>
+        // GET api/meeting
+        // This method retrieves all meetings. It returns a list of meetings.
         [HttpGet]
         public ActionResult<List<Meeting>> GetAllMeetings()
         {
@@ -31,10 +32,8 @@ namespace backendSpark.API.Controllers
             }
         }
 
-        /// <summary>
-        /// Generate a new meeting schedule for an event
-        /// This will delete all existing meetings and create a new schedule based on event info and attendees
-        /// </summary>
+        // POST api/meeting/GenerateSchedule
+        // This method generates a meeting schedule based on the provided event ID.
         [HttpPost("GenerateSchedule")]
         public ActionResult GenerateSchedule([FromBody] GenerateScheduleRequest request)
         {

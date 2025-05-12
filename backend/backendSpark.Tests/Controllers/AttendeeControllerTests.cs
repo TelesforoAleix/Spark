@@ -1,10 +1,8 @@
-using Xunit;
 using Moq;
 using Microsoft.AspNetCore.Mvc;
 using backendSpark.API.Controllers;
 using backendSpark.Model.Entities;
 using backendSpark.Model.Repositories;
-using System.Collections.Generic;
 
 namespace backendSpark.Tests.Controllers
 {
