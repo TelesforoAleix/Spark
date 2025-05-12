@@ -5,3 +5,7 @@
     margin-left: 1rem;
     overflow: hidden;
 }
+
+.logout {
+    color: rgb(150, 150, 150);
+}

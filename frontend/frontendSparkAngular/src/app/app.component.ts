@@ -13,4 +13,10 @@ import { MeetingListComponent } from './meeting-list/meeting-list.component';
 })
 export class AppComponent {
   title = 'frontendSparkAngular';
+  
+  logout() {
+    localStorage.removeItem('headerValue');
+    localStorage.removeItem('authToken');
+  }
 }
+
