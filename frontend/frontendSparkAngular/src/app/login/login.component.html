@@ -1,14 +1,62 @@
-<div> 
-  <label>Username</label> 
-  <input type="text" [(ngModel)]="username"/> 
-</div> 
-<div> 
-  <label>Password</label> 
-  <input type="password" [(ngModel)]="password" /> 
-</div> 
-<div> 
-  <button type="button" (click)="login()">Login</button> 
-</div> 
-@if(!this.authenticated) { 
-  <span>Credentials invalid</span> 
-}
+<div class="login-card-container">
+  <div class="section-header">
+    <h2>Welcome to Spark</h2>
+  </div>
+
+  <div class="login-card">
+    <div class="card-header">
+      <img src="../../assets/computing-network-logo-design-technology-vector-28215124.jpg" alt="Spark Logo" class="logo-image">
+      <div class="login-title-section">
+        <h1 class="login-name">Sign In</h1>
+        <p class="login-location">
+          <span>🔒</span> Access your networking dashboard
+        </p>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="login-grid">
+        <div class="login-section">
+          <h3 class="section-title">Login Credentials</h3>
+          
+          <div class="info-item">
+            <span class="info-label">Username:</span>
+            <span class="info-value">
+              <input type="text" [(ngModel)]="username" class="login-input" placeholder="Enter your username"/>
+            </span>
+          </div>
+          
+          <div class="info-item">
+            <span class="info-label">Password:</span>
+            <span class="info-value">
+              <input type="password" [(ngModel)]="password" class="login-input" placeholder="Enter your password"/>
+            </span>
+          </div>
+
+          <div class="login-actions">
+            <button type="button" (click)="login()" class="main-button">Login</button>
+          </div>
+          
+          @if(!this.authenticated) {
+            <div class="error-message">
+              <span class="error-icon">⚠️</span>
+              <span>Credentials invalid</span>
+            </div>
+          }
+        </div>
+        
+        <div class="login-section info-section">
+          <h3 class="section-title">Demo Account</h3>
+          <div class="info-item">
+            <span class="info-label">Username:</span>
+            <span class="info-value highlight-value">admin</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Password:</span>
+            <span class="info-value highlight-value">admin123</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
